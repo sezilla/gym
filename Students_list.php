@@ -92,7 +92,7 @@ $query = mysqli_query($conn, $sql);
                   <h1
                     class="text-orange-800 text-lg font-medium self-center whitespace-nowrap my-auto"
                   >
-                    Students
+                    Total Members
                   </h1>
                 </div>
               </a>
@@ -110,7 +110,7 @@ $query = mysqli_query($conn, $sql);
                   <h1
                     class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto"
                   >
-                    Enrollees
+                    Active Members
                   </h1>
                 </div>
               </a>
@@ -128,7 +128,7 @@ $query = mysqli_query($conn, $sql);
                   <h1
                     class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto"
                   >
-                    Requests
+                    Inactive Members
                   </h1>
                 </div>
               </a>
@@ -148,7 +148,7 @@ $query = mysqli_query($conn, $sql);
                 class="flex w-full items-center justify-between gap-5 max-md:max-w-full max-md:flex-wrap"
               >
                 <h1 class="text-orange-950 text-4xl font-bold my-auto">
-                  Students
+                  Total Members
                 </h1>
                 <!--Admin Dropdown-->
               <div class="max-w-lg">
