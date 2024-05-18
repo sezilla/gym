@@ -78,7 +78,7 @@ $query = mysqli_query($conn, $sql);
                   </h1>
                 </div>
               </a>
-              <a href="Students_list.php">
+              <a href="totalmembers.php">
                 <div
                   class="items-start bg-[#e0e8ed] self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
@@ -96,7 +96,7 @@ $query = mysqli_query($conn, $sql);
                   </h1>
                 </div>
               </a>
-              <a href="Enrollees.php">
+              <a href="activemembers.php">
                 <div
                   class="items-start self-stretch flex w-full justify-between gap-5 pl-6 pr-16 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
@@ -114,7 +114,7 @@ $query = mysqli_query($conn, $sql);
                   </h1>
                 </div>
               </a>
-              <a href="requests.php">
+              <a href="inactivemembers.php">
                 <div
                   class="items-start self-stretch flex w-full justify-between gap-5 pl-6 pr-16 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >

@@ -132,7 +132,7 @@ $query = mysqli_query($conn, $sql);
                   </h1>
                 </div>
               </a>
-              <a href="Students_list.php">
+              <a href="totalmembers.php">
                 <div
                   class="items-start  self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
@@ -150,7 +150,7 @@ $query = mysqli_query($conn, $sql);
                   </h1>
                 </div>
               </a>
-              <a href="Enrollees.php">
+              <a href="activemembers.php">
                 <div
                   class="items-start self-stretch flex w-full justify-between gap-5 pl-6 pr-16 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
@@ -168,7 +168,7 @@ $query = mysqli_query($conn, $sql);
                   </h1>
                 </div>
               </a>
-              <a href="requests.php">
+              <a href="inactivemembers.php">
                 <div
                   class="items-start bg-[#e0e8ed] self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
@@ -328,7 +328,7 @@ $query = mysqli_query($conn, $sql);
           if ($result-> num_rows > 0) {
               while ($row =  $result-> fetch_assoc()){
                 //$program = $row['program'];
-                echo "<a href='requests.php?column=program&progvalue=". $row["program"]."'>". $row["program"]."</a>";
+                echo "<a href='inactivemembers.php?column=program&progvalue=". $row["program"]."'>". $row["program"]."</a>";
                 //echo "<option value= '". $row["program"]."'>". $row["program"]."</a>";
               }
           }
@@ -371,7 +371,7 @@ $query = mysqli_query($conn, $sql);
           if ($result-> num_rows > 0) {
               while ($row =  $result-> fetch_assoc()){
                 //$program = $row['program'];
-                echo "<a href='requests.php?column=yr_sec&yrsec=". $row["yr_sec"]."'>". $row["yr_sec"]."</a>";
+                echo "<a href='inactivemembers.php?column=yr_sec&yrsec=". $row["yr_sec"]."'>". $row["yr_sec"]."</a>";
                 //echo "<option value= '". $row["program"]."'>". $row["program"]."</a>";
               }
           }
@@ -402,9 +402,9 @@ $query = mysqli_query($conn, $sql);
                   class="aspect-square object-contain object-center w-full overflow-hidden shrink-0 flex-1"></button>
               </div>
               <div id="sortDropdown" class="dropdown-content">
-                <a href="requests.php?column=reqtype&order=asc">Ascending</a>
-                <a href="requests.php?column=reqtype&order=desc">Descending</a>
-                <a href="requests.php">Default</a>
+                <a href="inactivemembers.php?column=reqtype&order=asc">Ascending</a>
+                <a href="inactivemembers.php?column=reqtype&order=desc">Descending</a>
+                <a href="inactivemembers.php">Default</a>
               </div>  
             </div>
         </div>
@@ -519,49 +519,49 @@ $query = mysqli_query($conn, $sql);
     if(isset($_GET['order'])) {
       // Previous page button
       if ($currentPage > 1) {
-        echo "<a href='requests.php?order=".$sort_order."&page=" . ($currentPage - 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Previous</a>";
+        echo "<a href='inactivemembers.php?order=".$sort_order."&page=" . ($currentPage - 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Previous</a>";
     }
 
     // Page numbers
     for ($i = 1; $i <= $totalPages; $i++) {
-        echo "<a href='requests.php?order=".$sort_order."&page=$i' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>$i</a>";
+        echo "<a href='inactivemembers.php?order=".$sort_order."&page=$i' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>$i</a>";
     }
 
     // Next page button
     if ($currentPage < $totalPages) {
-        echo "<a href='requests.php?order=".$sort_order."&page=" . ($currentPage + 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Next</a>";
+        echo "<a href='inactivemembers.php?order=".$sort_order."&page=" . ($currentPage + 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Next</a>";
     }
     }
     else if (isset($_GET['progvalue'])) {
       // Previous page button
       if ($currentPage > 1) {
-        echo "<a href='requests.php?progvalue=".$program."&page=" . ($currentPage - 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Previous</a>";
+        echo "<a href='inactivemembers.php?progvalue=".$program."&page=" . ($currentPage - 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Previous</a>";
     }
 
     // Page numbers
     for ($i = 1; $i <= $totalPages; $i++) {
-        echo "<a href='requests.php?progvalue=".$program."&page=$i' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>$i</a>";
+        echo "<a href='inactivemembers.php?progvalue=".$program."&page=$i' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>$i</a>";
     }
 
     // Next page button
     if ($currentPage < $totalPages) {
-        echo "<a href='requests.php?progvalue=".$program."&page=" . ($currentPage + 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Next</a>";
+        echo "<a href='inactivemembers.php?progvalue=".$program."&page=" . ($currentPage + 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Next</a>";
     }
     }
     else {
       // Previous page button
       if ($currentPage > 1) {
-        echo "<a href='requests.php?page=" . ($currentPage - 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Previous</a>";
+        echo "<a href='inactivemembers.php?page=" . ($currentPage - 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Previous</a>";
     }
 
     // Page numbers
     for ($i = 1; $i <= $totalPages; $i++) {
-        echo "<a href='requests.php?page=$i' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>$i</a>";
+        echo "<a href='inactivemembers.php?page=$i' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>$i</a>";
     }
 
     // Next page button
     if ($currentPage < $totalPages) {
-        echo "<a href='requests.php?page=" . ($currentPage + 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Next</a>";
+        echo "<a href='inactivemembers.php?page=" . ($currentPage + 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Next</a>";
     }}
     ?>
     </div>

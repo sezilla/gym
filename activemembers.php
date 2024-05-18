@@ -78,7 +78,7 @@ $query = mysqli_query($conn, $sql);
                   </h1>
                 </div>
               </a>
-              <a href="Students_list.php">
+              <a href="totalmembers.php">
                 <div
                   class="items-start  self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
@@ -96,7 +96,7 @@ $query = mysqli_query($conn, $sql);
                   </h1>
                 </div>
               </a>
-              <a href="Enrollees.php">
+              <a href="activemembers.php">
                 <div
                   class="items-start bg-[#e0e8ed] self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
@@ -114,7 +114,7 @@ $query = mysqli_query($conn, $sql);
                   </h1>
                 </div>
               </a>
-              <a href="requests.php">
+              <a href="inactivemembers.php">
                 <div
                   class="items-start  self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
@@ -281,17 +281,17 @@ $query = mysqli_query($conn, $sql);
 
     // Previous page button
     if ($currentPage > 1) {
-        echo "<a href='enrollees.php?page=" . ($currentPage - 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Previous</a>";
+        echo "<a href='activemembers.php?page=" . ($currentPage - 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Previous</a>";
     }
 
     // Page numbers
     for ($i = 1; $i <= $totalPages; $i++) {
-        echo "<a href='enrollees.php?page=$i' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>$i</a>";
+        echo "<a href='activemembers.php?page=$i' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>$i</a>";
     }
 
     // Next page button
     if ($currentPage < $totalPages) {
-        echo "<a href='enrollees.php?page=" . ($currentPage + 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Next</a>";
+        echo "<a href='activemembers.php?page=" . ($currentPage + 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Next</a>";
     }
     ?>
 </div>

@@ -65,7 +65,7 @@ include("db_conn.php");
                 </div>
               </a>
               <!--Student-->
-              <a href="Students_list.php">
+              <a href="totalmembers.php">
                 <div
                   class="items-start  self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
@@ -86,7 +86,7 @@ include("db_conn.php");
               </a>
 
               <!--Active Members-->
-              <a href="Enrollees.php">
+              <a href="activemembers.php">
                 <div
                   class="items-start  self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
@@ -106,7 +106,7 @@ include("db_conn.php");
               </a>
 
               <!--Request-->
-              <a href="requests.php">
+              <a href="inactivemembers.php">
                 <div
                   class="items-start  self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
@@ -200,7 +200,7 @@ include("db_conn.php");
             >
               <div class="flex items-stretch gap-5">
                 <button
-                onclick="location.href='Students_list.php'"
+                onclick="location.href='totalmembers.php'"
                   class="aspect-square object-contain object-center w-[65px] overflow-hidden shrink-0 max-w-full"
                 >
                   <img
@@ -212,7 +212,7 @@ include("db_conn.php");
                   class="self-center flex grow basis-[0%] flex-col items-stretch"
                 >
                   <div class="text-orange-950 text-center text-lg">
-                  <a href="Students_list.php">Total Members</a>
+                  <a href="totalmembers.php">Total Members</a>
                   </div>
                   <div class="text-orange-800 text-center text-4xl font-bold">
                   <?php
@@ -228,7 +228,7 @@ include("db_conn.php");
               </div>
               <div class="flex items-stretch gap-5">
                 <button
-                onclick="location.href='requests.php'"
+                onclick="location.href='inactivemembers.php'"
                   class="aspect-square object-contain object-center w-[65px] overflow-hidden shrink-0 max-w-full"
                 >
                   <img
@@ -242,7 +242,7 @@ include("db_conn.php");
                   <div
                     class="text-orange-950 text-center text-lg whitespace-nowrap"
                   >
-                  <a href="requests.php">Inactive Members</a>
+                  <a href="inactivemembers.php">Inactive Members</a>
                   </div>
                   <div class="text-orange-800 text-center text-4xl font-bold">
                   <?php
