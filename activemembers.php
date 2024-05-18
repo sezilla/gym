@@ -78,7 +78,7 @@ $query = mysqli_query($conn, $sql);
                   </h1>
                 </div>
               </a>
-              <a href="totalmembers.php">
+              <a href="register.php">
                 <div
                   class="items-start  self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
