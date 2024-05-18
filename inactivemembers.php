@@ -188,45 +188,8 @@ $query = mysqli_query($conn, $sql);
               </a>
               
 
-              
-              <div class= "outer-container">
-    <div class="container">
-            <div class="row">
-                <div class="col-md-5">
-                    <video id="preview"  style="  border-radius: 10px; width: 300px; height: 300px; object-fit: cover;"></video>
-                </div>
-                <div class="col-md-6">
-                    <form action="insert1.php" method="post" class="form-horizontal">
-                        <label>Scan QR Code</label>
-                        <input type="text" name="text" id="text" readonyy="" placeholder="Scan QR Code" class="form-control">
-                    </form>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
         <script>
-            let scanner = new Instascan.Scanner({ video: document.getElementById('preview')});
-            Instascan.Camera.getCameras().then(function(cameras){
-                if (cameras.length > 0){
-                    scanner.start(cameras[0]);
-                } else {
-                    alert('No cameras found');
-                }
-            }).catch(function(e){
-                console.error(e);
-            });
-
-            scanner.addListener('scan',function(c){
-                document.getElementById('text').value=c;
-                document.forms[0].submit();
-            });
-
-            //design the size of camera
             
-            
-            video.style.objectFit = 'cover';
-
         function openForm() {
             document.getElementById("myForm").style.display = "block";
         }
