@@ -212,7 +212,7 @@ include("db_conn.php");
                   class="self-center flex grow basis-[0%] flex-col items-stretch"
                 >
                   <div class="text-orange-950 text-center text-lg">
-                  <a href="register.php">Active Members</a>
+                  <a href="active.php">Active Members</a>
                   </div>
                   <div class="text-orange-800 text-center text-4xl font-bold">
                   <?php
