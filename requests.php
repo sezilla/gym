@@ -265,7 +265,7 @@ $query = mysqli_query($conn, $sql);
                 class="flex w-full items-center justify-between gap-5 max-md:max-w-full max-md:flex-wrap"
               >
                 <h1 class="text-orange-950 text-4xl font-bold my-auto">
-                  Requests
+                  Inactive Members
                 </h1>
                 <div class="max-w-lg">
                   <button
