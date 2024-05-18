@@ -80,12 +80,12 @@ include("db_conn.php");
                   <h1
                     class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto"
                   >
-                    Students
+                    Total Members
                   </h1>
                 </div>
               </a>
 
-              <!--Enrollees-->
+              <!--Active Members-->
               <a href="Enrollees.php">
                 <div
                   class="items-start  self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
@@ -100,7 +100,7 @@ include("db_conn.php");
                   <h1
                     class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto"
                   >
-                    Enrollees
+                    Active Members
                   </h1>
                 </div>
               </a>
@@ -120,7 +120,7 @@ include("db_conn.php");
                   <h1
                     class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto"
                   >
-                    Requests
+                    Inactive Members
                   </h1>
                 </div>
               </a>
@@ -212,7 +212,7 @@ include("db_conn.php");
                   class="self-center flex grow basis-[0%] flex-col items-stretch"
                 >
                   <div class="text-orange-950 text-center text-lg">
-                  <a href="Students_list.php">Students</a>
+                  <a href="Students_list.php">Total Members</a>
                   </div>
                   <div class="text-orange-800 text-center text-4xl font-bold">
                   <?php
@@ -242,7 +242,7 @@ include("db_conn.php");
                   <div
                     class="text-orange-950 text-center text-lg whitespace-nowrap"
                   >
-                  <a href="requests.php">Requests</a>
+                  <a href="requests.php">Inactive Members</a>
                   </div>
                   <div class="text-orange-800 text-center text-4xl font-bold">
                   <?php
