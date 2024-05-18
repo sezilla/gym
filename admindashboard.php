@@ -292,22 +292,22 @@ include("db_conn.php");
                   <h2
                     class="text-orange-950 text-center text-xl font-semibold leading-7 self-center max-w-[288px]"
                   >
-                    Pending
+                    Month-to-Month
                   </h2>
                   <p class="text-orange-950 text-base leading-5 self-stretch mt-8">
-                  Pending request forms of students. Dynamic queue of students
-                  awaiting administrative action.
+                  Monthly gym memberships offer flexibility with lower upfront
+                  costs, but can be pricier in the long run.
                 </p>
-                <div class="text-orange-950 text-center text-4xl font-bold leading-10 mt-6">
+                <!--<div class="text-orange-950 text-center text-4xl font-bold leading-10 mt-6">
                   <?php
-                  $sql="Select * from `request`";
+                  /*$sql="Select * from `request`";
                   $result=mysqli_query($conn,$sql);
                   if (isset($result)) {
                     $row = mysqli_num_rows($result);
                     echo $row;
-                  }
+                  }*/
                   ?>
-                </div>
+                </div>-->
                 </div>
               </div>
               <div
@@ -319,26 +319,26 @@ include("db_conn.php");
                   <h2
                     class="text-orange-950 text-center text-xl font-semibold leading-7 self-center max-w-[288px]"
                   >
-                    Completed
+                    Yearly
                   </h2>
                   <p
                     class="text-orange-950 text-base leading-5 self-stretch mt-8"
                   >
-                    Completed forms of students who requested their credentials,
-                    awaiting to review and approval to finalize.
+                  Yearly memberships lock you in for a year but are more
+                  cost-effective and provide an incentive for regular attendance.
                   </p>
-                  <div
+                  <!--<div
                     class="text-orange-950 text-center text-4xl font-bold leading-10 mt-6"
                   >
                   <?php
-                  $sql="Select * from `completed_request`";
+                  /*$sql="Select * from `completed_request`";
                   $result=mysqli_query($conn,$sql);
                   if (isset($result)) {
                     $row = mysqli_num_rows($result);
                     echo $row;
-                  }
+                  }*/
                   ?>
-                  </div>
+                  </div>-->
                 </div>
               </div>
               <div
