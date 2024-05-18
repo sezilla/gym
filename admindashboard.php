@@ -80,7 +80,7 @@ include("db_conn.php");
                   <h1
                     class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto"
                   >
-                    Total Members
+                    Register
                   </h1>
                 </div>
               </a>
@@ -212,7 +212,7 @@ include("db_conn.php");
                   class="self-center flex grow basis-[0%] flex-col items-stretch"
                 >
                   <div class="text-orange-950 text-center text-lg">
-                  <a href="register.php">Total Members</a>
+                  <a href="register.php">Register</a>
                   </div>
                   <div class="text-orange-800 text-center text-4xl font-bold">
                   <?php

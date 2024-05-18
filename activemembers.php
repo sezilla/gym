@@ -92,7 +92,7 @@ $query = mysqli_query($conn, $sql);
                   <h1
                     class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto"
                   >
-                    Total Members
+                    Register
                   </h1>
                 </div>
               </a>

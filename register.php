@@ -26,7 +26,7 @@ $query = mysqli_query($conn, $sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
-    <title>Total Members</title>
+    <title>Register</title>
     <link rel="icon" type="image/x-icon" href="images/papsicon.png" />
     <link rel="stylesheet" href="table.css" type="text/css">
     <link href="/dist/output.css" rel="stylesheet" />
@@ -92,7 +92,7 @@ $query = mysqli_query($conn, $sql);
                   <h1
                     class="text-orange-800 text-lg font-medium self-center whitespace-nowrap my-auto"
                   >
-                    Total Members
+                    Register
                   </h1>
                 </div>
               </a>
@@ -148,7 +148,7 @@ $query = mysqli_query($conn, $sql);
                 class="flex w-full items-center justify-between gap-5 max-md:max-w-full max-md:flex-wrap"
               >
                 <h1 class="text-orange-950 text-4xl font-bold my-auto">
-                  Total Members
+                  Register
                 </h1>
                 <!--Admin Dropdown-->
               <div class="max-w-lg">
