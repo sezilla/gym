@@ -147,7 +147,7 @@ $query = mysqli_query($conn, $sql);
                 class="flex w-full items-center justify-between gap-5 max-md:max-w-full max-md:flex-wrap"
               >
                 <h1 class="text-orange-950 text-4xl font-bold my-auto">
-                  Enrollees
+                  Active Members
                 </h1>
                 <!--Admin Dropdown-->
               <div class="max-w-lg">
