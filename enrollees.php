@@ -26,7 +26,7 @@ $query = mysqli_query($conn, $sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
-    <title>Enrollees</title>
+    <title>Active Members</title>
     <link rel="icon" type="image/x-icon" href="images/papsicon.png" />
     <link rel="stylesheet" href="table.css" type="text/css">
     <link href="/dist/output.css" rel="stylesheet" />
@@ -92,7 +92,7 @@ $query = mysqli_query($conn, $sql);
                   <h1
                     class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto"
                   >
-                    Students
+                    Total Members
                   </h1>
                 </div>
               </a>
@@ -110,7 +110,7 @@ $query = mysqli_query($conn, $sql);
                   <h1
                     class="text-orange-800 text-lg font-medium self-center whitespace-nowrap my-auto"
                   >
-                    Enrollees
+                    Active Members
                   </h1>
                 </div>
               </a>
@@ -128,7 +128,7 @@ $query = mysqli_query($conn, $sql);
                   <h1
                     class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto"
                   >
-                    Requests
+                    Inactive Members
                   </h1>
                 </div>
               </a>
