@@ -373,7 +373,7 @@ $query = mysqli_query($conn, $sql);
         </div>
         </div>
             <section
-              class="shadow-lg bg-[#eeefea] flex flex-col mt-10 mb-20 rounded-3xl max-md:max-w-full max-md:mt-10"
+              class="shadow-lg bg-[#faf0eb] flex flex-col mt-10 mb-20 rounded-3xl max-md:max-w-full max-md:mt-10"
             >
             
         <div class="flex flex-col items-center">
