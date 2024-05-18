@@ -13,9 +13,9 @@ if (isset($_GET['progvalue'])) {
   $program = $_GET['progvalue'];
 }
 
-if (isset($_GET['yrsec'])) {
-  $yrsec = $_GET['yrsec'];
-}
+//if (isset($_GET['yrsec'])) {
+ // $yrsec = $_GET['yrsec'];
+//}
 
 
 // Number of rows per page
@@ -32,7 +32,7 @@ if (isset($_GET['page']) && is_numeric($_GET['page'])) {
 $limitStart = ($currentPage - 1) * $rowsPerPage;
 
 // Fetch data with LIMIT clause
-$sql = "SELECT * FROM request LIMIT $limitStart, $rowsPerPage";
+$sql = "SELECT * FROM inactive LIMIT $limitStart, $rowsPerPage";
 $query = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
@@ -176,7 +176,7 @@ $query = mysqli_query($conn, $sql);
                     loading="lazy"
                     src="images/requests1.svg"
                     class="aspect-square object-center self-stretch max-w-full"
-                    alt="Requests Icon"
+                    alt="requests Icon"
                   />
 
                   <h1
@@ -270,7 +270,7 @@ $query = mysqli_query($conn, $sql);
                   alt="Program Icon" />
               </div>
             </a-->
-            <!--form action="request.php" method="get"-->
+            <!--form action="inactive.php" method="get"-->
             <div name="program" id="dropdown" class="items-center w-[160px] h-[40px] flex px-5 py-0.5 rounded-[40px] 
                 border-2 border-solid border-stone-500">
                 <div class="justify-center items-center flex w-[127px] max-w-full gap-4">
@@ -280,18 +280,18 @@ $query = mysqli_query($conn, $sql);
                   class="aspect-square object-contain object-center w-full overflow-hidden shrink-0 flex-1"></button>
               </div>
               <div id="programDropdown" class="dropdown-content">
-                <!--a href="request.php?column=program&value=">Link</a>
-                <a href="request.php?column=program&value=">Link</a>
-                <a href="request.php?column=program&value=">Link</a-->
+                <!--a href="inactive.php?column=program&value=">Link</a>
+                <a href="inactive.php?column=program&value=">Link</a>
+                <a href="inactive.php?column=program&value=">Link</a-->
                 <?php 
           
-          $sql = "SELECT DISTINCT program from request";
+          $sql = "SELECT DISTINCT fullname from inactive";
           $result = $conn-> query($sql);
 
           if ($result-> num_rows > 0) {
               while ($row =  $result-> fetch_assoc()){
                 //$program = $row['program'];
-                echo "<a href='inactivemembers.php?column=program&progvalue=". $row["program"]."'>". $row["program"]."</a>";
+                echo "<a href='inactivemembers.php?column=fullname&progvalue=". $row["fullname"]."'>". $row["fullname"]."</a>";
                 //echo "<option value= '". $row["program"]."'>". $row["program"]."</a>";
               }
           }
@@ -328,13 +328,13 @@ $query = mysqli_query($conn, $sql);
               <div id="ylDropdown" class="dropdown-content">
               <?php 
           
-          $sql = "SELECT DISTINCT yr_sec from request";
+          $sql = "SELECT DISTINCT membershipno from inactive";
           $result = $conn-> query($sql);
 
           if ($result-> num_rows > 0) {
               while ($row =  $result-> fetch_assoc()){
                 //$program = $row['program'];
-                echo "<a href='inactivemembers.php?column=yr_sec&yrsec=". $row["yr_sec"]."'>". $row["yr_sec"]."</a>";
+                echo "<a href='inactivemembers.php?column=membershipno&yrsec=". $row["membershipno"]."'>". $row["membershipno"]."</a>";
                 //echo "<option value= '". $row["program"]."'>". $row["program"]."</a>";
               }
           }
@@ -365,8 +365,8 @@ $query = mysqli_query($conn, $sql);
                   class="aspect-square object-contain object-center w-full overflow-hidden shrink-0 flex-1"></button>
               </div>
               <div id="sortDropdown" class="dropdown-content">
-                <a href="inactivemembers.php?column=reqtype&order=asc">Ascending</a>
-                <a href="inactivemembers.php?column=reqtype&order=desc">Descending</a>
+                <a href="inactivemembers.php?column=fullname&order=asc">Ascending</a>
+                <a href="inactivemembers.php?column=fullname&order=desc">Descending</a>
                 <a href="inactivemembers.php">Default</a>
               </div>  
             </div>
@@ -383,12 +383,10 @@ $query = mysqli_query($conn, $sql);
               <table>
                 
                 <tr>
-                <th class="text-orange-950 font-semibold leading-6">Name</th>
-                <th class="text-orange-950 font-semibold leading-6">Student No.</th>
-                <th class="text-orange-950 font-semibold leading-6">Control No.</th>
-                <th class="text-orange-950 font-semibold leading-6">Year Level</th>
-                <th class="text-orange-950 font-semibold leading-6">Program</th>
-                <th class="text-orange-950 font-semibold leading-6">Form Type</th>
+                <th class="text-orange-950 font-semibold leading-6">Full Name.</th>
+                <th class="text-orange-950 font-semibold leading-6">Membership No.</th>
+                <th class="text-orange-950 font-semibold leading-6">Contact No.</th>
+                <!--th class="text-orange-950 font-semibold leading-6">Form Type</th-->
                 <th class="text-orange-950 font-semibold leading-6">Action</th>
                 </tr>
           <!--SHOWDATA-->
@@ -397,16 +395,16 @@ $query = mysqli_query($conn, $sql);
           include("db_conn.php");
           
           if (isset($_GET['order'])){
-            $sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from request ORDER BY reqtype $sort_order";
+            $sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from inactive ORDER BY reqtype $sort_order";
           }
           else if (isset($_GET['progvalue'])){
-            $sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from request WHERE program = '$program'";
+            $sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from inactive WHERE program = '$program'";
           }
           else if (isset($_GET['order']) && isset($_GET['progvalue'])) {
-            $sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from request WHERE program = '$program' ORDER BY reqtype $sort_order";
+            $sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from inactive WHERE program = '$program' ORDER BY reqtype $sort_order";
           }
           else {
-            $sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from request";
+            $sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from inactive";
           }
           
           
@@ -436,32 +434,23 @@ $query = mysqli_query($conn, $sql);
           ?-->
           <?php 
           if (isset($_GET['order'])){
-            $sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from request ORDER BY reqtype $sort_order LIMIT $limitStart, $rowsPerPage";
+            $sql = "SELECT fullname, membershipno, contactno from inactive ORDER BY order $sort_order LIMIT $limitStart, $rowsPerPage";
           }
           else if (isset($_GET['progvalue'])){
-            $sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from request WHERE program = '$program' LIMIT $limitStart, $rowsPerPage";
-          }
-          else if (isset($_GET['yrsec'])){
-            $sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from request WHERE yr_sec = '$yrsec' LIMIT $limitStart, $rowsPerPage";
-          }
-          else if (isset($_GET['order']) && isset($_GET['progvalue'])) {
-            $sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from request WHERE program = '$program' ORDER BY reqtype $sort_order LIMIT $limitStart, $rowsPerPage";
+            $sql = "SELECT fullname, membershipno, contactno  from inactive WHERE fullname = '$fullname' LIMIT $limitStart, $rowsPerPage";
           }
           else {
-            $sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from request LIMIT $limitStart, $rowsPerPage";
+            $sql = "SELECT fullname, membershipno, contactno from inactive LIMIT $limitStart, $rowsPerPage";
           }
           
-          //$sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from request";
+          //$sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from inactive";
           
           $result = $conn-> query($sql);   
           while ($row = mysqli_fetch_assoc($result)) { ?>
                     <tr>
             <td><?php echo $row["fullname"]; ?></td>
-            <td><?php echo $row["student_num"]; ?></td>
-            <td><?php echo $row["ctrl_num"]; ?></td>
-            <td><?php echo $row["yr_sec"]; ?></td>
-            <td><?php echo $row["program"]; ?></td>
-            <td><?php echo $row["reqtype"]; ?></td>
+            <td><?php echo $row["membershipno"]; ?></td>
+            <td><?php echo $row["contactno"]; ?></td>
             <td>
                 <button class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-3xl px-4 py-2.5 mr-5'>View</button>
             </td>
@@ -475,7 +464,7 @@ $query = mysqli_query($conn, $sql);
 <!--PREVIOUS & NEXT PAGE BUTTON-->
 <div class="flex justify-center mt-4 mb-4">
     <?php
-    $resultnumrows = mysqli_query($conn, "SELECT * FROM request");
+    $resultnumrows = mysqli_query($conn, "SELECT * FROM inactive");
     $totalRows = mysqli_num_rows($resultnumrows);
     $totalPages = ceil($totalRows / $rowsPerPage);
 

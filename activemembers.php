@@ -15,7 +15,7 @@ if (isset($_GET['page']) && is_numeric($_GET['page'])) {
 $limitStart = ($currentPage - 1) * $rowsPerPage;
 
 // Fetch data with LIMIT clause
-$sql = "SELECT * FROM enrollees LIMIT $limitStart, $rowsPerPage";
+$sql = "SELECT * FROM active LIMIT $limitStart, $rowsPerPage";
 $query = mysqli_query($conn, $sql);
 ?>
 
@@ -242,12 +242,11 @@ $query = mysqli_query($conn, $sql);
               <table>
                 
                 <tr>
-                <th class="text-orange-950 font-semibold leading-6">Student No.</th>
-                <th class="text-orange-950 font-semibold leading-6">Year Level</th>
-                <th class="text-orange-950 font-semibold leading-6">Program</th>
-                <th class="text-orange-950 font-semibold leading-6">Last Name</th>
+                <th class="text-orange-950 font-semibold leading-6">Full Name.</th>
+                <th class="text-orange-950 font-semibold leading-6">Membership No.</th>
                 <th class="text-orange-950 font-semibold leading-6">Contact No.</th>
-                <th class="text-orange-950 font-semibold leading-6">E-mail</th>
+                <th class="text-orange-950 font-semibold leading-6">Membership Plan</th>
+                <th class="text-orange-950 font-semibold leading-6">Expiry</th>
                 <!--th class="text-orange-950 font-semibold leading-6">Form Type</th-->
                 <th class="text-orange-950 font-semibold leading-6">Action</th>
                 </tr>
@@ -255,12 +254,11 @@ $query = mysqli_query($conn, $sql);
                 <tbody id="showdata">
                   <?php while ($row = mysqli_fetch_assoc($query)) { ?>
                     <tr>
-            <td><?php echo $row["stud_num"]; ?></td>
-            <td><?php echo $row["year_lvl"]; ?></td>
-            <td><?php echo $row["program"]; ?></td>
-            <td><?php echo $row["last_n"]; ?></td>
+            <td><?php echo $row["fullname"]; ?></td>
+            <td><?php echo $row["membershipno"]; ?></td>
             <td><?php echo $row["contactno"]; ?></td>
-            <td><?php echo $row["email"]; ?></td>
+            <td><?php echo $row["plan"]; ?></td>
+            <td><?php echo $row["expirydate"]; ?></td>
             <td>
                 <button class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-3xl px-4 py-2.5 mr-5'>View</button>
             </td>
@@ -276,7 +274,7 @@ $query = mysqli_query($conn, $sql);
 <!--PREVIOUS & NEXT PAGE BUTTON-->
 <div class="flex justify-center mt-4 mb-4">
     <?php
-    $totalRows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM enrollees"));
+    $totalRows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM active"));
     $totalPages = ceil($totalRows / $rowsPerPage);
 
     // Previous page button

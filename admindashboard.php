@@ -216,7 +216,7 @@ include("db_conn.php");
                   </div>
                   <div class="text-orange-800 text-center text-4xl font-bold">
                   <?php
-                  $sql="Select * from request";
+                  $sql="Select * from active";
                   $result=mysqli_query($conn,$sql);
                   if (isset($result)) {
                     $row = mysqli_num_rows($result);
@@ -246,15 +246,19 @@ include("db_conn.php");
                   </div>
                   <div class="text-orange-800 text-center text-4xl font-bold">
                   <?php
-                  $sql="Select * from `request` ";
+                  $sql="Select * from `inactive` ";
                   $result1=mysqli_query($conn,$sql);
-                  $sql="Select * from `completed_request`";
+                  if (isset($result)) {
+                    $row = mysqli_num_rows($result);
+                    echo $row;
+                  }
+                  /*$sql="Select * from `completed_request`";
                   $result2=mysqli_query($conn,$sql);
                   
                   if (isset($result1) && isset($result2)) {
                     $row = mysqli_num_rows($result1) + mysqli_num_rows($result2);
                     echo $row;
-                  }
+                  }*/
                   ?>
                   </div>
                 </div>
@@ -362,12 +366,12 @@ include("db_conn.php");
                     class="text-orange-950 text-center text-4xl font-bold leading-10 mt-6"
                   >
                   <?php
-                  $sql="Select * from `missed_request`";
+                  /*$sql="Select * from `missed_request`";
                   $result=mysqli_query($conn,$sql);
                   if (isset($result)) {
                     $row = mysqli_num_rows($result);
                     echo $row;
-                  }
+                  }*/
                   ?>
                   </div>
                 </div>
