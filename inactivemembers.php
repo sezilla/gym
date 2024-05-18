@@ -86,11 +86,11 @@ $query = mysqli_query($conn, $sql);
     }
   </style>
 </head>
-<body class="bg-fixed bg-no-repeat bg-cover bg-center bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#f3f4f5] via-[#e0e8ed] to-[#d0dde6]">
+<body class="bg-fixed bg-no-repeat bg-cover bg-center bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] h-screen w-screen from-[#f3f4f5] via-[#e0e8ed] to-[#d0dde6]">
   
   <div class="pr-12">
         <section
-          class="shadow-inner gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0"
+          class="shadow-inner gap-5 flex max-h-screen max-md:flex-col max-md:items-stretch max-md:gap-0"
         >
         <aside>
           <div
