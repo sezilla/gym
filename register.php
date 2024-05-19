@@ -210,28 +210,20 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
 
 $response = array('success' => false, 'message' => '');
 
-$membershipTypesQuery = "SELECT id, type, amount FROM plan";
-$membershipTypesResult = $conn->query($membershipTypesQuery);
-
-function generateUniqueFileName($originalName) {
-  $timestamp = time();
-  $extension = pathinfo($originalName, PATHINFO_EXTENSION);
-  $uniqueName = $timestamp . '_' . uniqid() . '.' . $extension;
-  return $uniqueName;
-}
+$plansQuery = "SELECT id, type, amount FROM plan";
+$plansResult = $conn->query($plansQuery);
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if(isset($_POST["submit"])){
     $fullname = $_POST['fullname'];
-    $contactNumber = $_POST['contactNumber'];
-    $membershipType = $_POST['plan'];
+    $contactno = $_POST['contactno'];
+    $plan = $_POST['plan'];
+    $expirydate = $_POST['expirydate'];
 
-    $membershipNumber = 'CA-' . str_pad(mt_rand(1, 999999), 6, '0', STR_PAD_LEFT);
+    $query = "INSERT INTO active (fullname, contactno, plan, expirydate, createdate) 
+                    VALUES ('$fullname', '$contactno', '$plan', '$expirydate', NOW())";
 
-
-
-    $insertQuery = "INSERT INTO active (fullname, contactno, plan, membership_number, createdate) 
-                    VALUES ('$fullname', '$contactNumber','$membershipType', '$membershipNumber', NOW())";
+mysqli_query($conn,$query);
 
 }
 ?>
@@ -265,20 +257,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                     <div class="row mt-3">
                                         <div class="col-sm-6">
-                                            <label for="contactNumber">Contact Number</label>
-                                            <input type="tel" class="form-control" id="contactNumber"
-                                                   name="contactNumber" placeholder="Enter contact number" required>
+                                            <label for="contactno">Contact Number</label>
+                                            <input type="tel" class="form-control" id="contactno"
+                                                   name="contactno" placeholder="Enter contact number" required>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                    <div class="row mt-3">
+                                        <div class="col-sm-6">
+                                            <label for="expirydate">Expired Date</label>
+                                            <input type="tel" class="form-control" id="expirydate"
+                                                   name="expirydate" placeholder="Enter expiry date" required>
                                         </div>
                                     </div>
                                     </div>
 
                                     <div class="row mt-3">
                                     <div class="col-sm-6">
-                                        <label for="membershipType">Membership Plan</label>
+                                        <label for="plan">Membership Plan</label>
                                         <select class="form-control" id="plan" name="plan" required>
                                             <?php
-                                            if ($membershipTypesResult) {
-                                                while ($row = $membershipTypesResult->fetch_assoc()) {
+                                            if ($plansResult) {
+                                                while ($row = $plansResult->fetch_assoc()) {
                                                     $currencyQuery = "SELECT currency FROM settings";
                                                     $currencyResult = $conn->query($currencyQuery);
 
@@ -303,7 +304,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                 </div>
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
                         </div>
