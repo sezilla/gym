@@ -207,8 +207,12 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
 
 <?php
 
+if (isset($_POST["submit"])) {
+  $renewDuration = $_POST['plan'];
+  $expiryDate = date('Y-m-d', strtotime("+$renewDuration months"));
+  $renewDate = date('Y-m-d');
 
-
+}
 
 
 $response = array('success' => false, 'message' => '');
@@ -272,26 +276,10 @@ mysqli_query($conn,$query);
                                     <div class="row mt-3">
                                     <div class="col-sm-6">
                                         <label for="plan">Membership Plan</label>
-                                        <select class="form-control" id="plan" name="plan" required>
-                                            <?php
-                                            if ($plansResult) {
-                                                while ($row = $plansResult->fetch_assoc()) {
-                                                    $currencyQuery = "SELECT currency FROM settings";
-                                                    $currencyResult = $conn->query($currencyQuery);
-
-                                                    if ($currencyResult->num_rows > 0) {
-                                                        $currencyRow = $currencyResult->fetch_assoc();
-                                                        $currencySymbol = $currencyRow['currency'];
-                                                    } else {
-                                                        $currencySymbol = '$';
-                                                    }
-
-                                                    echo "<option value='{$row['id']}'>{$row['type']} - {$currencySymbol}{$row['amount']}</option>";
-                                                }
-                                            } else {
-                                                echo "Error: " . $conn->error;
-                                            }
-                                            ?>
+                                        <select id="plan" name="plan" required>
+                                          <option value="1">Basic (1 Month)</option>
+                                          <option value="2">Premium (3 Months)</option>
+                                          <option value="3">Yearly</option>
                                         </select>
                                     </div>
 
@@ -310,9 +298,31 @@ mysqli_query($conn,$query);
                 </div>
 
 
-            </div>
+            </div>  
         </section>
     </div>
+
+
+
+
+    <script>
+    $(document).ready(function () {
+        function updateTotalAmount() {
+            var membershipTypeAmount = parseFloat($('#membershipType option:selected').text().split('-').pop());
+
+            var renewDuration = parseFloat($('#plan').val());
+
+            var totalAmount = membershipTypeAmount * renewDuration;
+
+            $('#totalAmount').val(totalAmount.toFixed(2));
+        }
+
+        $('#membershipType, #plan').change(updateTotalAmount);
+
+        updateTotalAmount();
+    });
+</script>
+
 
 
             
