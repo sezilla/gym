@@ -276,6 +276,28 @@ $query = mysqli_query($conn, $sql);
             $expiryDate = clone $createdate;
             $expiryDate->modify("+$days days");
             $expiryDateFormatted = $expiryDate->format('Y-m-d');
+
+            // Check if expiry date is in the past
+            $currentDate = new DateTime();
+            if ($expiryDate < $currentDate) {
+                // Insert into inactive table
+                $fullname = $row["fullname"];
+                $membershipno = $row["membershipno"];
+                $contactno = $row["contactno"];
+                $plan = $row["plan"];
+
+                $insertQuery = "INSERT INTO inactive (fullname, membershipno, contactno, plan) 
+                                VALUES ('$fullname', '$membershipno', '$contactno', '$plan')";
+                mysqli_query($conn, $insertQuery);
+
+                // Delete from active table
+                $membershipNoToDelete = $row["membershipno"];
+                $deleteQuery = "DELETE FROM active WHERE membershipno = '$membershipNoToDelete'";
+                mysqli_query($conn, $deleteQuery);
+
+            }
+            
+            
         ?>
         <tr>
             <td><?php echo $row["fullname"]; ?></td>
