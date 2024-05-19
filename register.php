@@ -208,6 +208,9 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
 <?php
 
 
+
+
+
 $response = array('success' => false, 'message' => '');
 
 $plansQuery = "SELECT id, type, amount FROM plan";
@@ -218,10 +221,9 @@ if(isset($_POST["submit"])){
     $fullname = $_POST['fullname'];
     $contactno = $_POST['contactno'];
     $plan = $_POST['plan'];
-    $expirydate = $_POST['expirydate'];
-
-    $query = "INSERT INTO active (fullname, contactno, plan, expirydate, createdate) 
-                    VALUES ('$fullname', '$contactno', '$plan', '$expirydate', NOW())";
+    
+    $query = "INSERT INTO active (fullname, contactno, plan, createdate) 
+                    VALUES ('$fullname', '$contactno', '$plan',  NOW())";
 
 mysqli_query($conn,$query);
 
@@ -264,13 +266,7 @@ mysqli_query($conn,$query);
                                     </div>
                                     </div>
 
-                                    <div class="row mt-3">
-                                        <div class="col-sm-6">
-                                            <label for="expirydate">Expired Date</label>
-                                            <input type="tel" class="form-control" id="expirydate"
-                                                   name="expirydate" placeholder="Enter expiry date" required>
-                                        </div>
-                                    </div>
+                                    
                                     </div>
 
                                     <div class="row mt-3">
