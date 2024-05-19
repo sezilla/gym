@@ -1,6 +1,7 @@
 <?php
 include("db_conn.php");
 
+
 // Number of rows per page
 $rowsPerPage = 10;
 
@@ -217,13 +218,13 @@ if (isset($_POST["submit"])) {
 
 $response = array('success' => false, 'message' => '');
 
-
+$membershipno = $_GET['updateid'];
 if(isset($_POST["submit"])){
     $fullname = $_POST['fullname'];
     $contactno = $_POST['contactno'];
     $plan = $_POST['plan'];
     
-    $query = "UPDATE active set ";
+    $query = "UPDATE active set membershipno=$membershipno, fullname='$fullname', contactno='$contactno', plan='$plan' where membershipno=$membershipno";
 
 mysqli_query($conn,$query);
 
