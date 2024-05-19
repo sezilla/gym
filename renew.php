@@ -224,9 +224,18 @@ if(isset($_POST["submit"])){
     $contactno = $_POST['contactno'];
     $plan = $_POST['plan'];
     
-    $query = "UPDATE active set membershipno=$membershipno, fullname='$fullname', contactno='$contactno', plan='$plan' where membershipno=$membershipno";
+    //$query = "UPDATE inactive set membershipno=$membershipno, fullname='$fullname', contactno='$contactno', plan='$plan' where membershipno=$membershipno";
+    $query = "SELECT fullname FROM inactive WHERE membershipno = $membershipno";
+    mysqli_query($conn,$query);
+    $insertQuery = "INSERT INTO active (fullname, membershipno, contactno, plan) 
+                                VALUES ('$fullname', '$membershipno', '$contactno', '$plan')";
+                mysqli_query($conn, $insertQuery);
 
-mysqli_query($conn,$query);
+                // Delete from active table
+                //$membershipNoToDelete = $row["membershipno"];
+                $deleteQuery = "DELETE FROM inactive WHERE membershipno = '$membershipno'";
+                mysqli_query($conn, $deleteQuery);
+//ysqli_query($conn,$query);
 
 }
 ?>
@@ -249,11 +258,11 @@ mysqli_query($conn,$query);
                             <form method="post" action="" enctype="multipart/form-data">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <label for="fullname">Full Name</label>
                                             <input type="text" class="form-control" id="fullname" name="fullname"
                                                    placeholder="Enter full name" required>
-                                        </div>
+                                        </div> -->
                                         
                                     </div>
 
