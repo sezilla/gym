@@ -206,39 +206,51 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
 
 
 
-<?php
+            <?php
 
 if (isset($_POST["submit"])) {
   $renewDuration = $_POST['plan'];
   $expiryDate = date('Y-m-d', strtotime("+$renewDuration months"));
   $renewDate = date('Y-m-d');
-
 }
-
 
 $response = array('success' => false, 'message' => '');
 
 $membershipno = $_GET['updateid'];
 if(isset($_POST["submit"])){
-    $fullname = $_POST['fullname'];
-    $contactno = $_POST['contactno'];
+    // Fetch the fullname based on membershipno
+    $query = "SELECT fullname, contactno FROM inactive WHERE membershipno = $membershipno";
+    $result = mysqli_query($conn, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $fullname = $row['fullname'];
+        $contactno = $row['contactno'];
+    } else {
+        $response['message'] = "Member not found.";
+        echo json_encode($response);
+        exit();
+    }
+
     $plan = $_POST['plan'];
     
-    //$query = "UPDATE inactive set membershipno=$membershipno, fullname='$fullname', contactno='$contactno', plan='$plan' where membershipno=$membershipno";
-    $query = "SELECT fullname FROM inactive WHERE membershipno = $membershipno";
-    mysqli_query($conn,$query);
+    // Insert into active table
     $insertQuery = "INSERT INTO active (fullname, membershipno, contactno, plan) 
                                 VALUES ('$fullname', '$membershipno', '$contactno', '$plan')";
-                mysqli_query($conn, $insertQuery);
-
-                // Delete from active table
-                //$membershipNoToDelete = $row["membershipno"];
-                $deleteQuery = "DELETE FROM inactive WHERE membershipno = '$membershipno'";
-                mysqli_query($conn, $deleteQuery);
-//ysqli_query($conn,$query);
-
+    if (mysqli_query($conn, $insertQuery)) {
+        // Delete from inactive table
+        $deleteQuery = "DELETE FROM inactive WHERE membershipno = '$membershipno'";
+        mysqli_query($conn, $deleteQuery);
+        $response['success'] = true;
+        $response['message'] = "Member successfully renewed.";
+    } else {
+        $response['message'] = "Failed to renew member.";
+    }
+    
+    echo json_encode($response);
 }
 ?>
+
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -268,11 +280,11 @@ if(isset($_POST["submit"])){
 
 
                                     <div class="row mt-3">
-                                        <div class="col-sm-6">
+                                        <!-- <div class="col-sm-6">
                                             <label for="contactno">Contact Number</label>
                                             <input type="tel" class="form-control" id="contactno"
                                                    name="contactno" placeholder="Enter contact number" required>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     </div>
 
