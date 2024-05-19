@@ -192,13 +192,129 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
 
 
 
-            
 
 
 
 
 
 
+
+
+
+
+
+
+
+<?php
+
+
+$response = array('success' => false, 'message' => '');
+
+$membershipTypesQuery = "SELECT id, type, amount FROM plan";
+$membershipTypesResult = $conn->query($membershipTypesQuery);
+
+function generateUniqueFileName($originalName) {
+  $timestamp = time();
+  $extension = pathinfo($originalName, PATHINFO_EXTENSION);
+  $uniqueName = $timestamp . '_' . uniqid() . '.' . $extension;
+  return $uniqueName;
+}
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $fullname = $_POST['fullname'];
+    $contactNumber = $_POST['contactNumber'];
+    $membershipType = $_POST['plan'];
+
+    $membershipNumber = 'CA-' . str_pad(mt_rand(1, 999999), 6, '0', STR_PAD_LEFT);
+
+
+
+    $insertQuery = "INSERT INTO members (fullname, contactno, plan, membership_number, createdate) 
+                    VALUES ('$fullname', '$contactNumber','$membershipType', '$membershipNumber', NOW())";
+}
+?>
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<div class="wrapper">
+
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-md-12">
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title"><i class="fas fa-keyboard"></i> Add Members Form</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <form method="post" action="" enctype="multipart/form-data">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <label for="fullname">Full Name</label>
+                                            <input type="text" class="form-control" id="fullname" name="fullname"
+                                                   placeholder="Enter full name" required>
+                                        </div>
+                                        
+                                    </div>
+
+
+                                    <div class="row mt-3">
+                                        <div class="col-sm-6">
+                                            <label for="contactNumber">Contact Number</label>
+                                            <input type="tel" class="form-control" id="contactNumber"
+                                                   name="contactNumber" placeholder="Enter contact number" required>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                    <div class="row mt-3">
+                                    <div class="col-sm-6">
+                                        <label for="membershipType">Membership Plan</label>
+                                        <select class="form-control" id="plan" name="plan" required>
+                                            <?php
+                                            if ($membershipTypesResult) {
+                                                while ($row = $membershipTypesResult->fetch_assoc()) {
+                                                    $currencyQuery = "SELECT currency FROM settings";
+                                                    $currencyResult = $conn->query($currencyQuery);
+
+                                                    if ($currencyResult->num_rows > 0) {
+                                                        $currencyRow = $currencyResult->fetch_assoc();
+                                                        $currencySymbol = $currencyRow['currency'];
+                                                    } else {
+                                                        $currencySymbol = '$';
+                                                    }
+
+                                                    echo "<option value='{$row['id']}'>{$row['type']} - {$currencySymbol}{$row['amount']}</option>";
+                                                }
+                                            } else {
+                                                echo "Error: " . $conn->error;
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+
+                
+                                </div>
+
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </section>
+    </div>
 
 
             
