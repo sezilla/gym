@@ -274,7 +274,7 @@ $query = mysqli_query($conn, $sql);
             <div name="program" id="dropdown" class="items-center w-[160px] h-[40px] flex px-5 py-0.5 rounded-[40px] 
                 border-2 border-solid border-stone-500">
                 <div class="justify-center items-center flex w-[127px] max-w-full gap-4">
-                <div class="text-stone-500 text-lg leading-7 my-auto">Program</div>
+                <div class="text-stone-500 text-lg leading-7 my-auto">Full Name</div>
                 <button onclick="PROGRAMdropdown()" id="dropbtn"
                   style="background-image: url('https://cdn.builder.io/api/v1/image/assets/TEMP/b1f4b831-70b4-4724-832d-ea63cec558e5?apiKey=949dc02d5acc420a9a54e7e811a36e3e&')"
                   class="aspect-square object-contain object-center w-full overflow-hidden shrink-0 flex-1"></button>
@@ -320,7 +320,7 @@ $query = mysqli_query($conn, $sql);
             <div id="dropdown" class="items-center w-[175px] h-[40px] flex px-5 py-0.5 rounded-[40px] 
                 border-2 border-solid border-stone-500">
                 <div class="justify-center items-center flex gap-4">
-                <div class="text-stone-500 text-lg leading-7 my-auto">Year Level</div>
+                <div class="text-stone-500 text-lg leading-7 my-auto">Subscription</div>
                 <button onclick="YLdropdown()" id="dropbtn"
                   style="background-image: url('https://cdn.builder.io/api/v1/image/assets/TEMP/b1f4b831-70b4-4724-832d-ea63cec558e5?apiKey=949dc02d5acc420a9a54e7e811a36e3e&')"
                   class="aspect-square object-contain object-center w-full overflow-hidden shrink-0 flex-1"></button>
