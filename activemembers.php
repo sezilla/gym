@@ -239,34 +239,59 @@ $query = mysqli_query($conn, $sql);
             <section class="bg-gray-200 flex w-full max-w-full flex-col pb-8 
             rounded-3xl">
             <div class="self-center flex w-[100%] max-w-full max-md:flex-wrap justify-evenly mb-5">
-              <table>
-                
-                <tr>
-                <th class="text-orange-950 font-semibold leading-6">Full Name.</th>
-                <th class="text-orange-950 font-semibold leading-6">Membership No.</th>
-                <th class="text-orange-950 font-semibold leading-6">Contact No.</th>
-                <th class="text-orange-950 font-semibold leading-6">Membership Plan</th>
-                <th class="text-orange-950 font-semibold leading-6">Expiry</th>
-                <!--th class="text-orange-950 font-semibold leading-6">Form Type</th-->
-                <th class="text-orange-950 font-semibold leading-6">Action</th>
-                </tr>
-<!--SHOWDATA-->
-                <tbody id="showdata">
-                  <?php while ($row = mysqli_fetch_assoc($query)) { ?>
-                    <tr>
+
+<table>
+    <tr>
+        <th class="text-orange-950 font-semibold leading-6">Full Name.</th>
+        <th class="text-orange-950 font-semibold leading-6">Membership No.</th>
+        <th class="text-orange-950 font-semibold leading-6">Contact No.</th>
+        <th class="text-orange-950 font-semibold leading-6">Membership Plan</th>
+        <th class="text-orange-950 font-semibold leading-6">Expiry</th>
+        <th class="text-orange-950 font-semibold leading-6">Action</th>
+    </tr>
+    <tbody id="showdata">
+        <?php 
+        while ($row = mysqli_fetch_assoc($query)) { 
+            // Determine the number of days and the plan display text based on the plan
+            switch ($row["plan"]) {
+                case 1:
+                    $days = 30;
+                    $planText = "1 Month";
+                    break;
+                case 2:
+                    $days = 90;
+                    $planText = "3 Months";
+                    break;
+                case 3:
+                    $days = 360;
+                    $planText = "1 Year";
+                    break;
+                default:
+                    $days = 0; // default case if plan is not 1, 2, or 3
+                    $planText = "Unknown Plan";
+            }
+
+            // Calculate expiry date
+            $createdate = new DateTime($row["createdate"]);
+            $expiryDate = clone $createdate;
+            $expiryDate->modify("+$days days");
+            $expiryDateFormatted = $expiryDate->format('Y-m-d');
+        ?>
+        <tr>
             <td><?php echo $row["fullname"]; ?></td>
             <td><?php echo $row["membershipno"]; ?></td>
             <td><?php echo $row["contactno"]; ?></td>
-            <td><?php echo $row["plan"]; ?></td>
-            <td><?php echo $row["expirydate"]; ?></td>
+            <td><?php echo $planText; ?></td>
+            <td><?php echo $expiryDateFormatted; ?></td>
             <td>
                 <button class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-3xl px-4 py-2.5 mr-5'>View</button>
             </td>
         </tr>
-    <?php } ?>
-            </tbody>
-        </div>
-        </table>
+        <?php } ?>
+    </tbody>
+</table>
+
+
 <!--END SHOWDATA-->
 
     </section>
