@@ -145,22 +145,11 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
               <div
                 class="flex w-full items-center justify-between gap-5 max-md:max-w-full max-md:flex-wrap"
               >
-
-                
-
-
-              <div>
-              <h1 class="text-orange-950 text-4xl font-bold my-auto">
+                <h1 class="text-orange-950 text-4xl font-bold my-auto">
                   Register
                 </h1>
-
-
-
                 <!--Admin Dropdown-->
-                <div class="max-w-lg">
-
-                
-
+              <div class="max-w-lg">
                 <button
                   class="text-[#424242] bg-transparent hover:bg-transparent focus:ring-4 focus:ring-transparent font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
                   type="button"
@@ -194,10 +183,21 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
                   </ul>
                 </div>
               </div>
+              </div>
+            </header>
+            
 
-                <h4 class="text-orange-950 text-4xl font-bold my-auto">
+                
+
+
+              <div>
+
+
+
+
+                <h2 class="text-orange-950 text-2xl font-bold my-auto">
                   Add Members Form
-                </h4>
+                </h2>
 
       <form class="" method="post" autocomplete="off">
       <section>
@@ -272,7 +272,7 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
                         <option value=" "></option>
                         <option value="1">Basic (1 Month)</option>
                         <option value="2">Standard (3 Months)</option>
-                        <option value="3">Premium (Yearly)</option>
+                        <option value="3">Premium (1 Year)</option>
                       
                       
                       </select>
@@ -306,7 +306,14 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
                   </div>
                 </div>
 
-
+                <button type="submit"
+              name="submit" class="justify-center items-center shadow-2xl bg-[#AC644C] flex w-[244px] max-w-full gap-2 mt-20 px-12 py-7 rounded-[40px] self-center max-md:mt-10 max-md:px-5">
+               
+              <h2 class="text-gray-200 text-center text-lg font-extrabold leading-6">Submit</h2>
+                <a href="https://cdn.builder.io/api/v1/image/assets/TEMP/95614cd9-381a-458f-b521-21c69ed9a189?apiKey=00d7018a335e46bbabd3ad8844351700" class="aspect-square object-contain object-center w-[18px] justify-center items-center overflow-hidden self-center shrink-0 max-w-full my-auto">
+                  <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/95614cd9-381a-458f-b521-21c69ed9a189?apiKey=00d7018a335e46bbabd3ad8844351700&" alt="" />
+                </a>
+              </button>
 
 
 
@@ -325,14 +332,7 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
               
             </div>
 
-            <button type="submit"
-              name="submit" class="justify-center items-center shadow-2xl bg-[#AC644C] flex w-[244px] max-w-full gap-2 mt-20 px-12 py-7 rounded-[40px] self-center max-md:mt-10 max-md:px-5">
-               
-              <h2 class="text-gray-200 text-center text-lg font-extrabold leading-6">Submit</h2>
-                <a href="https://cdn.builder.io/api/v1/image/assets/TEMP/95614cd9-381a-458f-b521-21c69ed9a189?apiKey=00d7018a335e46bbabd3ad8844351700" class="aspect-square object-contain object-center w-[18px] justify-center items-center overflow-hidden self-center shrink-0 max-w-full my-auto">
-                  <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/95614cd9-381a-458f-b521-21c69ed9a189?apiKey=00d7018a335e46bbabd3ad8844351700&" alt="" />
-                </a>
-              </button>
+            
 
             
           </div>
@@ -348,24 +348,7 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
 
 
               </div>
-            </header>
             
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -396,72 +379,6 @@ mysqli_query($conn,$query);
 ?>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
-<div class="wrapper">
-
-    <div class="content-wrapper">
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <!-- left column -->
-                    <div class="col-md-12">
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title"><i class="fas fa-keyboard"></i> Add Members Form</h3>
-                            </div>
-                            <!-- /.card-header -->
-                            <!-- form start -->
-                            <form method="post" action="" enctype="multipart/form-data">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <label for="fullname">Full Name</label>
-                                            <input type="text" class="form-control" id="fullname" name="fullname"
-                                                   placeholder="Enter full name" required>
-                                        </div>
-                                        
-                                    </div>
-
-
-                                    <div class="row mt-3">
-                                        <div class="col-sm-6">
-                                            <label for="contactno">Contact Number</label>
-                                            <input type="tel" class="form-control" id="contactno"
-                                                   name="contactno" placeholder="Enter contact number" required>
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                    
-                                    </div>
-
-                                    <div class="row mt-3">
-                                    <div class="col-sm-6">
-                                        <label for="plan">Membership Plan</label>
-                                        <select id="plan" name="plan" required>
-                                          <option value="1">Basic (1 Month)</option>
-                                          <option value="2">Standard (3 Months)</option>
-                                          <option value="3">Premium (Yearly)</option>
-                                        </select>
-                                    </div>
-
-                
-                                </div>
-
-                                </div>
-                                <div class="card-footer">
-                                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </form>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-            </div>  
-        </section>
-    </div>
 
 
 
