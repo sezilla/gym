@@ -154,6 +154,8 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
                   Register
                 </h1>
 
+
+
                 <!--Admin Dropdown-->
                 <div class="max-w-lg">
 
@@ -193,7 +195,9 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
                 </div>
               </div>
 
-
+                <h4 class="text-orange-950 text-4xl font-bold my-auto">
+                  Add Members Form
+                </h4>
 
       <form class="" method="post" autocomplete="off">
       <section>
@@ -231,13 +235,13 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
                     <label
                       for="student_num"
                       class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap"
-                      >Student Number</label
+                      >Contact Number</label
                     >
                     <input
                       id="student_num"
                       name="student_num"
                       class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1"
-                      placeholder="Student Number"
+                      placeholder="Contact Number"
                       required
                     />
                   </div>
@@ -245,47 +249,14 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
                 <div
                   class="flex flex-col items-stretch w-[33%] ml-5 max-md:w-full max-md:ml-0"
                 >
-                  <div class="items-stretch flex grow flex-col max-md:mt-10">
-                    <label
-                      for="program"
-                      class="text-[#401b1b] text-base font-extrabold leading-6 whitespace-nowrap"
-                      >Program</label
-                    >
-                    <div
-                      class="w-88 relative"
-                      
-                    >
-                      <input
-                        type="text"
-                        id="program"
-                        name="program"
-                        placeholder="Program"
-                        class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1"
-                        onkeyup="onkeyUp(event)"
-                        autocomplete="off"
-                      />
-                      <div
-                        id="dropdown"
-                        class="w-full h-60 border border-gray-300 rounded-md bg-[#eff0f2] absolute overflow-y-auto hidden"
-                      ></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <div class="justify-between mt-10 max-md:max-w-full">
-              <div
-                class="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0"
-              >
-                <div
-                  class="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0"
-                >
+
+
                   <div class="items-stretch flex grow flex-col max-md:mt-10">
-                    <label
+                  <label
                       for="yr_sec"
                       class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap"
-                      >Year and Section</label
+                      >Membership Plan</label
                     >
 
                     <div
@@ -298,30 +269,10 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
                         placeholder="Year and Section"
                         class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1"                        autocomplete="off"
                         >
-                        <option value=" "> </option>
-                        <option value="1-1">1-1</option>
-                        <option value="1-2">1-2</option>
-                        <option value="1-3">1-3</option>
-                        <option value="1-4">1-4</option>
-                        <option value="1-5">1-5</option>
-
-                        <option value="2-1">2-1</option>
-                        <option value="2-2">2-2</option>
-                        <option value="2-3">2-3</option>
-                        <option value="2-4">2-4</option>
-                        <option value="2-5">2-5</option>
-
-                        <option value="3-1">3-1</option>
-                        <option value="3-2">3-2</option>
-                        <option value="3-3">3-3</option>
-                        <option value="3-4">3-4</option>
-                        <option value="3-5">3-5</option>
-
-                        <option value="4-1">4-1</option>
-                        <option value="4-2">4-2</option>
-                        <option value="4-3">4-3</option>
-                        <option value="4-4">4-4</option>
-                        <option value="4-5">4-5</option>
+                        <option value=" "> Your Plan </option>
+                        <option value="Basic">Basic (1 Month)</option>
+                        <option value="Standard">Standard (3 Months)</option>
+                        <option value="Premium">Premium (YEarly)</option>
                       
                       
                       </select>
@@ -334,46 +285,32 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
                       ></div>
                     </div>
                   </div>
-                </div>
-                <div
-                  class="flex flex-col items-stretch w-[34%] ml-5 max-md:w-full max-md:ml-0"
-                >
-                  <div class="items-stretch flex grow flex-col max-md:mt-10">
-                    <label
-                      for="dob"
-                      class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap"
-                      >Date of Birth</label
-                    >
-                    <input
-                      type="date"
-                      id="dob"
-                      name="dob"
-                      class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1"
-                      placeholder="Date of Birth"
-                      required
-                    />
-                  </div>
-                </div>
-                <div
-                  class="flex flex-col items-stretch w-[33%] ml-5 max-md:w-full max-md:ml-0"
-                >
-                  <div class="items-stretch flex grow flex-col max-md:mt-10">
-                    <label
-                      for="sem"
-                      class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap"
-                      >Semester currently taking</label
-                    >
 
-                    <input
-                      type="text"
-                      id="sem"
-                      name="sem"
-                      placeholder="Semester currently taking"
-                      required
-                      class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1"
-                    />
+
+
+                </div>
+              </div>
+            </div>
+
+            <div class="justify-between mt-10 max-md:max-w-full">
+              <div
+                class="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0"
+              >
+                <div
+                  class="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0"
+                >
+                  <div class="items-stretch flex grow flex-col max-md:mt-10">
+                    
+                    
+                    </div>
                   </div>
                 </div>
+
+
+
+
+
+                
               </div>
             </div>
           </div>
@@ -382,24 +319,10 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
       <section>
         <div class="flex flex-col items-stretch px-5">
           <div
-            class="justify-center items-stretch bg-slate-300 flex w-full flex-col -mr-5 mt-12 px-7 py-8 rounded-[30px] max-md:max-w-full max-md:mt-10 max-md:px-5"
+            class="justify-center items-stretch flex w-full flex-col -mr-5 mt-12 px-7 py-8 rounded-[30px] max-md:max-w-full max-md:mt-10 max-md:px-5"
           >
-            <div class="items-stretch flex grow flex-col max-md:mt-10">
-              <label
-                for="purpose"
-                class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap"
-                >Purpose</label
-              >
-
-</div>
-              <input
-                type="text"
-                name="purpose"
-                id="purpose"
-                class="bg-[#eff0f2] align-text-top mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[10px] max-md:pl-1"
-                placeholder="Please type your specific reason of requesting a Transcript of Records here..."
-                required
-              />
+            
+              
             </div>
 
             <button type="submit"
@@ -516,8 +439,8 @@ mysqli_query($conn,$query);
                                         <label for="plan">Membership Plan</label>
                                         <select id="plan" name="plan" required>
                                           <option value="1">Basic (1 Month)</option>
-                                          <option value="2">Premium (3 Months)</option>
-                                          <option value="3">Yearly</option>
+                                          <option value="2">Standard (3 Months)</option>
+                                          <option value="3">Premium (Yearly)</option>
                                         </select>
                                     </div>
 
