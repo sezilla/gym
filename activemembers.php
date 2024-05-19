@@ -279,6 +279,9 @@ $query = mysqli_query($conn, $sql);
             $expiryDate->modify("+$days days");
             $expiryDateFormatted = $expiryDate->format('Y-m-d');
 
+            $currentDate = new DateTime();
+            $daysRemaining = $currentDate->diff($expiryDate)->days;
+
             // Check if expiry date is in the past
             $currentDate = new DateTime();
             if ($expiryDate < $currentDate) {
@@ -307,7 +310,7 @@ $query = mysqli_query($conn, $sql);
             <td><?php echo htmlspecialchars($row["membershipno"]); ?></td>
             <td><?php echo htmlspecialchars($row["contactno"]); ?></td>
             <td><?php echo htmlspecialchars($planText); ?></td>
-            <td><?php echo htmlspecialchars($expiryDateFormatted); ?></td>
+            <td><?php echo htmlspecialchars($expiryDateFormatted); ?><br><small><?php echo $daysRemaining; ?> days remaining</small></td>
             <td>
                 <button class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-3xl px-4 py-2.5 mr-5'>
                     <a href="renew.php?updateid=<?php echo urlencode($row['membershipno']); ?>" class="text-white">Renew</a>
