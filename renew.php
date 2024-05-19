@@ -223,8 +223,7 @@ if(isset($_POST["submit"])){
     $contactno = $_POST['contactno'];
     $plan = $_POST['plan'];
     
-    $query = "INSERT INTO active (fullname, contactno, plan, createdate) 
-                    VALUES ('$fullname', '$contactno', '$plan',  NOW())";
+    $query = "UPDATE active set ";
 
 mysqli_query($conn,$query);
 

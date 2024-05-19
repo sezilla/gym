@@ -260,7 +260,7 @@ $query = mysqli_query($conn, $sql);
             rounded-3xl">
             <div class="self-center flex w-[100%] max-w-full max-md:flex-wrap justify-evenly mb-5">
 
-<table>
+            <table>
     <tr>
         <th class="text-orange-950 font-semibold leading-6">Full Name.</th>
         <th class="text-orange-950 font-semibold leading-6">Membership No.</th>
@@ -320,18 +320,21 @@ $query = mysqli_query($conn, $sql);
             
         ?>
         <tr>
-            <td><?php echo $row["fullname"]; ?></td>
-            <td><?php echo $row["membershipno"]; ?></td>
-            <td><?php echo $row["contactno"]; ?></td>
-            <td><?php echo $planText; ?></td>
-            <td><?php echo $expiryDateFormatted; ?></td>
+            <td><?php echo htmlspecialchars($row["fullname"]); ?></td>
+            <td><?php echo htmlspecialchars($row["membershipno"]); ?></td>
+            <td><?php echo htmlspecialchars($row["contactno"]); ?></td>
+            <td><?php echo htmlspecialchars($planText); ?></td>
+            <td><?php echo htmlspecialchars($expiryDateFormatted); ?></td>
             <td>
-                <button class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-3xl px-4 py-2.5 mr-5'><a href ="renew.php?updateid='.$membershipno.'">Renew</a></button>
+                <button class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-3xl px-4 py-2.5 mr-5'>
+                    <a href="renew.php?updateid=<?php echo urlencode($row['membershipno']); ?>" class="text-white">Renew</a>
+                </button>
             </td>
         </tr>
         <?php } ?>
     </tbody>
 </table>
+
 
 
 <!--END SHOWDATA-->
