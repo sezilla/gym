@@ -223,7 +223,7 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
                       name="fullname"
                       id="fullname"
                       class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1"
-                      placeholder="Full Name"
+                      placeholder="Enter Your Fullname"
                       required
                     />
                   </div>
@@ -233,15 +233,15 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
                 >
                   <div class="items-stretch flex grow flex-col max-md:mt-10">
                     <label
-                      for="student_num"
+                      for="contactno"
                       class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap"
                       >Contact Number</label
                     >
                     <input
-                      id="student_num"
-                      name="student_num"
+                      id="contactno"
+                      name="contact"
                       class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1"
-                      placeholder="Contact Number"
+                      placeholder="Enter Your Contact Number"
                       required
                     />
                   </div>
@@ -251,7 +251,7 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
                 >
 
 
-
+<!--membership plan-->
                   <div class="items-stretch flex grow flex-col max-md:mt-10">
                   <label
                       for="yr_sec"
@@ -264,15 +264,15 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
                     >
                       <select
                         type="text"
-                        id="yr_sec"
-                        name="yr_sec"
-                        placeholder="Year and Section"
+                        id="plan"
+                        name="plan"
+                        placeholder="Your Plan"
                         class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1"                        autocomplete="off"
                         >
-                        <option value=" "> Your Plan </option>
-                        <option value="Basic">Basic (1 Month)</option>
-                        <option value="Standard">Standard (3 Months)</option>
-                        <option value="Premium">Premium (YEarly)</option>
+                        <option value=" "></option>
+                        <option value="1">Basic (1 Month)</option>
+                        <option value="2">Standard (3 Months)</option>
+                        <option value="3">Premium (Yearly)</option>
                       
                       
                       </select>
