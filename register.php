@@ -230,7 +230,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-    $insertQuery = "INSERT INTO members (fullname, contactno, plan, membership_number, createdate) 
+    $insertQuery = "INSERT INTO active (fullname, contactno, plan, membership_number, createdate) 
                     VALUES ('$fullname', '$contactNumber','$membershipType', '$membershipNumber', NOW())";
 }
 ?>
