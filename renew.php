@@ -79,7 +79,7 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
               </a>
               <a href="register.php">
                 <div
-                  class="items-start bg-[#e0e8ed] self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
+                class="items-start self-stretch flex w-full justify-between gap-5 pl-6 pr-16 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
                   <img
                   loading="lazy"
@@ -114,8 +114,8 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
                 </div>
               </a>
               <a href="inactivemembers.php">
-                <div
-                  class="items-start self-stretch flex w-full justify-between gap-5 pl-6 pr-16 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
+              <div
+                  class="items-start bg-[#e0e8ed] self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
                   <img
                     loading="lazy"
@@ -132,7 +132,7 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
                 </div>
               </a>
                
-               
+            
              
             </nav>
           </div>
@@ -241,13 +241,26 @@ if(isset($_POST["submit"])){
         // Delete from inactive table
         $deleteQuery = "DELETE FROM inactive WHERE membershipno = '$membershipno'";
         mysqli_query($conn, $deleteQuery);
-        $response['success'] = true;
-        $response['message'] = "Member successfully renewed.";
+        
     } else {
-        $response['message'] = "Failed to renew member.";
+  
     }
     
     echo json_encode($response);
+}
+
+
+if (isset($_GET['updateid'])) {
+    $memberId = $_GET['updateid'];
+
+    $fetchMemberQuery = "SELECT * FROM inactive WHERE membershipno = $memberId";
+    $fetchMemberResult = $conn->query($fetchMemberQuery);
+
+    if ($fetchMemberResult->num_rows > 0) {
+        $memberDetails = $fetchMemberResult->fetch_assoc();
+    } else {
+        exit();
+    }
 }
 ?>
 
@@ -270,21 +283,21 @@ if(isset($_POST["submit"])){
                             <form method="post" action="" enctype="multipart/form-data">
                                 <div class="card-body">
                                     <div class="row">
-                                        <!-- <div class="col-sm-6">
+                                         <div class="col-sm-6">
                                             <label for="fullname">Full Name</label>
                                             <input type="text" class="form-control" id="fullname" name="fullname"
-                                                   placeholder="Enter full name" required>
-                                        </div> -->
+                                                   placeholder="ff" value="<?php echo $memberDetails['fullname']; ?>" disabled>
+                                        </div>
                                         
                                     </div>
 
 
                                     <div class="row mt-3">
-                                        <!-- <div class="col-sm-6">
+                                        <div class="col-sm-6">
                                             <label for="contactno">Contact Number</label>
                                             <input type="tel" class="form-control" id="contactno"
-                                                   name="contactno" placeholder="Enter contact number" required>
-                                        </div> -->
+                                                   name="contactno" placeholder="cc" value="<?php echo $memberDetails['contactno']; ?>" disabled>
+                                        </div> 
                                     </div>
                                     </div>
 
