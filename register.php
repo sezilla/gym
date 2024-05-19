@@ -217,9 +217,6 @@ if (isset($_POST["submit"])) {
 
 $response = array('success' => false, 'message' => '');
 
-$plansQuery = "SELECT id, type, amount FROM plan";
-$plansResult = $conn->query($plansQuery);
-
 
 if(isset($_POST["submit"])){
     $fullname = $_POST['fullname'];
