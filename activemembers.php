@@ -270,7 +270,7 @@ $query = mysqli_query($conn, $sql);
         <th class="text-orange-950 font-semibold leading-6">Action</th>
     </tr>
     <tbody id="showdata">
-        <?php 
+    <?php 
         while ($row = mysqli_fetch_assoc($query)) { 
             // Determine the number of days and the plan display text based on the plan
             switch ($row["plan"]) {
@@ -319,6 +319,7 @@ $query = mysqli_query($conn, $sql);
             
             
         ?>
+
         <tr>
             <td><?php echo htmlspecialchars($row["fullname"]); ?></td>
             <td><?php echo htmlspecialchars($row["membershipno"]); ?></td>
