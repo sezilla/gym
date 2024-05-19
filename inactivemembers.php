@@ -187,26 +187,8 @@ $query = mysqli_query($conn, $sql);
                 </div>
               </a>
 
-              <!--Renewal-->
-              <a href="renew.php">
-                <div
-                  class="items-start  self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
-                >
-                  <img
-                  loading="lazy"
-                    src="images/Enrollees.svg"
-                    class="aspect-square object-center self-stretch max-w-full"
-                    alt="Enrollees Icon"
-                  />
-
-                  <h1
-                    class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto"
-                  >
-                    Renewal
-                  </h1>
-                </div>
-              </a>
               
+        
 
         <script>
             
@@ -467,13 +449,18 @@ $query = mysqli_query($conn, $sql);
           
           $result = $conn-> query($sql);   
           while ($row = mysqli_fetch_assoc($result)) { ?>
-                    <tr>
-            <td><?php echo $row["fullname"]; ?></td>
-            <td><?php echo $row["membershipno"]; ?></td>
-            <td><?php echo $row["contactno"]; ?></td>
+          <tr>
+            <td><?php echo htmlspecialchars($row["fullname"]); ?></td>
+            <td><?php echo htmlspecialchars($row["membershipno"]); ?></td>
+            <td><?php echo htmlspecialchars($row["contactno"]); ?></td>
             <td>
-                <button class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-3xl px-4 py-2.5 mr-5'>View</button>
+                <button class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-3xl px-4 py-2.5 mr-5'>
+                    <a href="renew.php?updateid=<?php echo urlencode($row['membershipno']); ?>" class="text-white">Renew</a>
+                    
+                </button>
+                
             </td>
+          
         </tr>
     <?php } ?>
           </tbody>

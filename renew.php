@@ -79,7 +79,7 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
               </a>
               <a href="register.php">
                 <div
-                  class="items-start bg-[#e0e8ed] self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
+                class="items-start self-stretch flex w-full justify-between gap-5 pl-6 pr-16 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
                   <img
                   loading="lazy"
@@ -114,8 +114,8 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
                 </div>
               </a>
               <a href="inactivemembers.php">
-                <div
-                  class="items-start self-stretch flex w-full justify-between gap-5 pl-6 pr-16 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
+              <div
+                  class="items-start bg-[#e0e8ed] self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
                   <img
                     loading="lazy"
@@ -132,7 +132,7 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
                 </div>
               </a>
                
-               
+            
              
             </nav>
           </div>
@@ -206,30 +206,64 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
 
 
 
-<?php
+            <?php
 
 if (isset($_POST["submit"])) {
   $renewDuration = $_POST['plan'];
   $expiryDate = date('Y-m-d', strtotime("+$renewDuration months"));
   $renewDate = date('Y-m-d');
-
 }
-
 
 $response = array('success' => false, 'message' => '');
 
 $membershipno = $_GET['updateid'];
 if(isset($_POST["submit"])){
-    $fullname = $_POST['fullname'];
-    $contactno = $_POST['contactno'];
+    // Fetch the fullname based on membershipno
+    $query = "SELECT fullname, contactno FROM inactive WHERE membershipno = $membershipno";
+    $result = mysqli_query($conn, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $fullname = $row['fullname'];
+        $contactno = $row['contactno'];
+    } else {
+        $response['message'] = "Member not found.";
+        echo json_encode($response);
+        exit();
+    }
+
     $plan = $_POST['plan'];
     
-    $query = "UPDATE active set membershipno=$membershipno, fullname='$fullname', contactno='$contactno', plan='$plan' where membershipno=$membershipno";
+    // Insert into active table
+    $insertQuery = "INSERT INTO active (fullname, membershipno, contactno, plan) 
+                                VALUES ('$fullname', '$membershipno', '$contactno', '$plan')";
+    if (mysqli_query($conn, $insertQuery)) {
+        // Delete from inactive table
+        $deleteQuery = "DELETE FROM inactive WHERE membershipno = '$membershipno'";
+        mysqli_query($conn, $deleteQuery);
+        
+    } else {
+  
+    }
+    
+    echo json_encode($response);
+}
 
-mysqli_query($conn,$query);
 
+if (isset($_GET['updateid'])) {
+    $memberId = $_GET['updateid'];
+
+    $fetchMemberQuery = "SELECT * FROM inactive WHERE membershipno = $memberId";
+    $fetchMemberResult = $conn->query($fetchMemberQuery);
+
+    if ($fetchMemberResult->num_rows > 0) {
+        $memberDetails = $fetchMemberResult->fetch_assoc();
+    } else {
+        exit();
+    }
 }
 ?>
+
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -249,10 +283,10 @@ mysqli_query($conn,$query);
                             <form method="post" action="" enctype="multipart/form-data">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-sm-6">
+                                         <div class="col-sm-6">
                                             <label for="fullname">Full Name</label>
                                             <input type="text" class="form-control" id="fullname" name="fullname"
-                                                   placeholder="Enter full name" required>
+                                                   placeholder="ff" value="<?php echo $memberDetails['fullname']; ?>" disabled>
                                         </div>
                                         
                                     </div>
@@ -262,8 +296,8 @@ mysqli_query($conn,$query);
                                         <div class="col-sm-6">
                                             <label for="contactno">Contact Number</label>
                                             <input type="tel" class="form-control" id="contactno"
-                                                   name="contactno" placeholder="Enter contact number" required>
-                                        </div>
+                                                   name="contactno" placeholder="cc" value="<?php echo $memberDetails['contactno']; ?>" disabled>
+                                        </div> 
                                     </div>
                                     </div>
 
