@@ -1,3 +1,10 @@
+<?php include("db_conn.php");
+
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -81,13 +88,4 @@
       </div>
     </div>
   </body>
-  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-         https://firebase.google.com/docs/web/setup#available-libraries -->
-  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
-
-  <!-- Our script must be loaded after firebase references -->
-  <script src="script.js"></script>
 </html>
