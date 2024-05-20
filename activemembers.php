@@ -246,22 +246,58 @@ $query = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_assoc($query)) { 
             // Determine the number of days and the plan display text based on the plan
             switch ($row["plan"]) {
-                case 1:
-                    $days = 30;
-                    $planText = "1 Month";
+              case 1:
+                  $days = 30;
+                  $planText = "1 Month";
+                  break;
+              case 2:
+                  $days = 60;
+                  $planText = "2 Months";
+                  break;
+              case 3:
+                  $days = 90;
+                  $planText = "3 Months";
+                  break;
+              case 4:
+                  $days = 120;
+                  $planText = "4 Months";
+                  break;
+              case 5:
+                  $days = 150;
+                  $planText = "5 Months";
+                  break;
+              case 6:
+                  $days = 180;
+                  $planText = "6 Months";
+                  break;
+              case 7:
+                    $days = 210;
+                    $planText = "7 Month";
                     break;
-                case 2:
-                    $days = 90;
-                    $planText = "3 Months";
+              case 8:
+                    $days = 240;
+                    $planText = "8 Months";
                     break;
-                case 3:
+              case 9:
+                    $days = 270;
+                    $planText = "9 Months";
+                    break;
+              case 10:
+                    $days = 300;
+                    $planText = "10 Months";
+                    break;
+              case 11:
+                    $days = 330;
+                    $planText = "11 Months";
+                    break;
+              case 12:
                     $days = 360;
                     $planText = "1 Year";
                     break;
-                default:
-                    $days = 0; // default case if plan is not 1, 2, or 3
-                    $planText = "Unknown Plan";
-            }
+              default:
+                  $days = 0; // default case if plan is not 1, 2, or 3
+                  $planText = "Unknown Plan";
+          }
 
             // Calculate expiry date
             $createdate = new DateTime($row["createdate"]);
