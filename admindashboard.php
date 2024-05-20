@@ -260,7 +260,39 @@ include("db_conn.php");
                   <div
                     class="text-orange-950 text-center text-2xl pt-4 font-bold self-center"
                   >
-                    Scan
+                    <?php
+                    // Fetch the number of rows in the 'active' table
+                    $activeCountResult = $conn->query("SELECT COUNT(*) AS count FROM active");
+                    if ($activeCountResult === FALSE) {
+                        die("Error fetching active count: " . $conn->error);
+                    }
+                    $activeCountRow = $activeCountResult->fetch_assoc();
+                    $activeCount = $activeCountRow['count'];
+
+                    // Fetch the number of rows in the 'inactive' table
+                    $inactiveCountResult = $conn->query("SELECT COUNT(*) AS count FROM inactive");
+                    if ($inactiveCountResult === FALSE) {
+                        die("Error fetching inactive count: " . $conn->error);
+                    }
+                    $inactiveCountRow = $inactiveCountResult->fetch_assoc();
+                    $inactiveCount = $inactiveCountRow['count'];
+
+                    // Close the connection
+                    $conn->close();
+
+                    // Calculate the total number of rows
+                    $total = $activeCount + $inactiveCount;
+
+                    // Calculate the ratio as a percentage
+                    if ($total > 0) {
+                        $ratio = ($activeCount / $total) * 100;
+                    } else {
+                        $ratio = 0; // If no rows in either table, set ratio to 0
+                    }
+
+                    // Display the ratio
+                    echo  number_format($ratio, 2) . "%" . " activeness" ;
+                ?>
                   </div>
                 </div>
               </div>
