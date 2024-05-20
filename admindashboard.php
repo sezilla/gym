@@ -43,7 +43,7 @@ include("db_conn.php");
             />
             
             <img
-            href="images/jimlogo.png"
+            src="images/jimlogo.png"
             />
 
             <nav
