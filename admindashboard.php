@@ -26,7 +26,7 @@ include("db_conn.php");
           <div
             class="bg-slate-300 h-full flex w-[240px] flex-col pt-6 max-md:pl-5"
           >
-            <!--img
+            <img
               loading="lazy"
               srcset="
                 https://cdn.builder.io/api/v1/image/assets/TEMP/e89eee81-b8cb-4838-b24c-009bba65d2d2?apiKey=00d7018a335e46bbabd3ad8844351700&width=100   100w,
@@ -40,7 +40,7 @@ include("db_conn.php");
               "
               class="-[aspect4.03] object-contain object-center w-[149px] overflow-hidden self-center max-w-full"
               
-            /-->
+            />
 
             <nav
               class="items-start self-stretch flex flex-col w-full pl-7 mt-10 mb-96 pb-4 max-md:my-10"
