@@ -317,8 +317,8 @@ $query = mysqli_query($conn, $sql);
                 $contactno = $row["contactno"];
                 $plan = $row["plan"];
 
-                $insertQuery = "INSERT INTO inactive (fullname, membershipno, contactno, plan) 
-                                VALUES ('$fullname', '$membershipno', '$contactno', '$plan')";
+                $insertQuery = "INSERT INTO inactive (fullname, membershipno, contactno) 
+                                VALUES ('$fullname', '$membershipno', '$contactno')";
                 mysqli_query($conn, $insertQuery);
 
                 // Delete from active table
