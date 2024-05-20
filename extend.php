@@ -232,18 +232,30 @@ if(isset($_POST["submit"])){
         exit();
     }
 
-    $plan = $_POST['plan'];
-    
-    // Insert into active table
-    $insertQuery = "INSERT INTO active (fullname, membershipno, contactno, plan) 
-                                VALUES ('$fullname', '$membershipno', '$contactno', '$plan')";
-    if (mysqli_query($conn, $insertQuery)) {
-        // Delete from inactive table
-        $deleteQuery = "DELETE FROM inactive WHERE membershipno = '$membershipno'";
-        mysqli_query($conn, $deleteQuery);
-        
+    $addplan = $_POST['plan'];
+
+
+
+    // Fetch current plan from 'active' table
+    $fetchPlanQuery = "SELECT plan FROM active WHERE membershipno = $membershipno";
+    $fetchPlanResult = mysqli_query($conn, $fetchPlanQuery);
+
+    if ($fetchPlanResult && mysqli_num_rows($fetchPlanResult) > 0) {
+        $row = mysqli_fetch_assoc($fetchPlanResult);
+        $currentPlan = $row['plan'];
+
+        // Add the value of 'membershipplan'
+        $newPlan = $addplan + $currentPlan;
+
+
+        // Update the 'plan' in the 'active' table
+        $updatePlanQuery = "UPDATE active SET plan = $newPlan WHERE membershipno = $membershipno";
+        mysqli_query($conn, $updatePlanQuery);
     } else {
-  
+        // Handle error if the membership number is not found
+        $response['message'] = "Active member not found.";
+        echo json_encode($response);
+        exit();
     }
     
     echo json_encode($response);
@@ -309,8 +321,8 @@ if (isset($_GET['updateid'])) {
                                         <label for="plan">Membership Plan</label>
                                         <select id="plan" name="plan" required>
                                           <option value="1">Basic (1 Month)</option>
-                                          <option value="2">Premium (3 Months)</option>
-                                          <option value="3">Yearly</option>
+                                          <option value="3">Premium (3 Months)</option>
+                                          <option value="12">Yearly</option>
                                         </select>
                                     </div>
 
