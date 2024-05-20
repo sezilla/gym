@@ -24,7 +24,7 @@ include("db_conn.php");
         <!--Sidebar-->
         <aside>
           <div
-            class="bg-slate-300 h-full flex w-[240px] flex-col pt-6 max-md:pl-5 px-2"
+            class="bg-slate-300 h-full flex w-[270px] flex-col pt-6 max-md:pl-5 px-2"
           >
             
             <img
@@ -36,9 +36,9 @@ include("db_conn.php");
             >
             <a href="adminDashboard.php">
                 <div
-                  class="items-start bg-[#e0e8ed] self-stretch flex w-full justify-between gap-5 pl-6 pr-16 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
+                  class="items-start bg-[#e0e8ed] self-stretch flex w-[235px] justify-between gap-5 pl-6 pr-16 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
-hellooooooo
+
                 <!--Dashboard-->
                   <img
                     loading="lazy"
