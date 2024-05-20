@@ -41,6 +41,10 @@ include("db_conn.php");
               class="-[aspect4.03] object-contain object-center w-[149px] overflow-hidden self-center max-w-full"
               
             />
+            
+            <img
+            href="images/jimlogo.png"
+            />
 
             <nav
               class="items-start self-stretch flex flex-col w-full pl-7 mt-10 mb-96 pb-4 max-md:my-10"
