@@ -219,7 +219,7 @@ $response = array('success' => false, 'message' => '');
 $membershipno = $_GET['updateid'];
 if(isset($_POST["submit"])){
     // Fetch the fullname based on membershipno
-    $query = "SELECT fullname, contactno FROM inactive WHERE membershipno = $membershipno";
+    $query = "SELECT fullname, contactno FROM active WHERE membershipno = $membershipno";
     $result = mysqli_query($conn, $query);
 
     if ($result && mysqli_num_rows($result) > 0) {
@@ -253,7 +253,7 @@ if(isset($_POST["submit"])){
 if (isset($_GET['updateid'])) {
     $memberId = $_GET['updateid'];
 
-    $fetchMemberQuery = "SELECT * FROM inactive WHERE membershipno = $memberId";
+    $fetchMemberQuery = "SELECT * FROM active WHERE membershipno = $memberId";
     $fetchMemberResult = $conn->query($fetchMemberQuery);
 
     if ($fetchMemberResult->num_rows > 0) {
