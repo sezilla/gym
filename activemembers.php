@@ -294,6 +294,58 @@ $query = mysqli_query($conn, $sql);
                     $days = 360;
                     $planText = "1 Year";
                     break;
+
+
+
+                    case 13:
+                      $days = 390;
+                      $planText = "a Year and 1 Month";
+                      break;
+                  case 14:
+                      $days = 420;
+                      $planText = "a Year and 2 Months";
+                      break;
+                  case 15:
+                      $days = 450;
+                      $planText = "a Year and 3 Months";
+                      break;
+                  case 16:
+                      $days = 480;
+                      $planText = "a Year and 4 Months";
+                      break;
+                  case 17:
+                      $days = 510;
+                      $planText = "a Year and 5 Months";
+                      break;
+                  case 18:
+                      $days = 540;
+                      $planText = "a Year and 6 Months";
+                      break;
+                  case 19:
+                        $days = 570;
+                        $planText = "a Year and 7 Month";
+                        break;
+                  case 20:
+                        $days = 600;
+                        $planText = "a Year and 8 Months";
+                        break;
+                  case 21:
+                        $days = 630;
+                        $planText = "a Year and 9 Months";
+                        break;
+                  case 22:
+                        $days = 660;
+                        $planText = "a Year and 10 Months";
+                        break;
+                  case 23:
+                        $days = 690;
+                        $planText = "a Year and 11 Months";
+                        break;
+                  case 24:
+                        $days = 720;
+                        $planText = "2 Years";
+                        break;
+
               default:
                   $days = 0; // default case if plan is not 1, 2, or 3
                   $planText = "Unknown Plan";
