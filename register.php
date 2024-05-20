@@ -268,7 +268,7 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
                         name="plan"
                         placeholder="Your Plan"
                         class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1"                        autocomplete="off"
-                        >
+                        required>
                         <option value=" "></option>
                         <option value="1">Basic (1 Month)</option>
                         <option value="2">Standard (3 Months)</option>
