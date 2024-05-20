@@ -10,7 +10,7 @@ include("db_conn.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Dashboard</title>
-    <link rel="icon" type="image/x-icon" href="images/jimicon.svg" />
+    <link rel="icon" type="image/x-icon" href="images/jimicon.png" />
     <link href="/dist/output.css" rel="stylesheet" />
     <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
   </head>
@@ -26,11 +26,21 @@ include("db_conn.php");
           <div
             class="bg-slate-300 h-full flex w-[240px] flex-col pt-6 max-md:pl-5"
           >
-            <img
+            <!--img
               loading="lazy"
-              href="images/jimlogo.svg"
+              srcset="
+                https://cdn.builder.io/api/v1/image/assets/TEMP/e89eee81-b8cb-4838-b24c-009bba65d2d2?apiKey=00d7018a335e46bbabd3ad8844351700&width=100   100w,
+                https://cdn.builder.io/api/v1/image/assets/TEMP/e89eee81-b8cb-4838-b24c-009bba65d2d2?apiKey=00d7018a335e46bbabd3ad8844351700&width=200   200w,
+                https://cdn.builder.io/api/v1/image/assets/TEMP/e89eee81-b8cb-4838-b24c-009bba65d2d2?apiKey=00d7018a335e46bbabd3ad8844351700&width=400   400w,
+                https://cdn.builder.io/api/v1/image/assets/TEMP/e89eee81-b8cb-4838-b24c-009bba65d2d2?apiKey=00d7018a335e46bbabd3ad8844351700&width=800   800w,
+                https://cdn.builder.io/api/v1/image/assets/TEMP/e89eee81-b8cb-4838-b24c-009bba65d2d2?apiKey=00d7018a335e46bbabd3ad8844351700&width=1200 1200w,
+                https://cdn.builder.io/api/v1/image/assets/TEMP/e89eee81-b8cb-4838-b24c-009bba65d2d2?apiKey=00d7018a335e46bbabd3ad8844351700&width=1600 1600w,
+                https://cdn.builder.io/api/v1/image/assets/TEMP/e89eee81-b8cb-4838-b24c-009bba65d2d2?apiKey=00d7018a335e46bbabd3ad8844351700&width=2000 2000w,
+                https://cdn.builder.io/api/v1/image/assets/TEMP/e89eee81-b8cb-4838-b24c-009bba65d2d2?apiKey=00d7018a335e46bbabd3ad8844351700&
+              "
               class="-[aspect4.03] object-contain object-center w-[149px] overflow-hidden self-center max-w-full"
-            />
+              
+            /-->
 
             <nav
               class="items-start self-stretch flex flex-col w-full pl-7 mt-10 mb-96 pb-4 max-md:my-10"
@@ -260,39 +270,7 @@ include("db_conn.php");
                   <div
                     class="text-orange-950 text-center text-2xl pt-4 font-bold self-center"
                   >
-                    <?php
-                    // Fetch the number of rows in the 'active' table
-                    $activeCountResult = $conn->query("SELECT COUNT(*) AS count FROM active");
-                    if ($activeCountResult === FALSE) {
-                        die("Error fetching active count: " . $conn->error);
-                    }
-                    $activeCountRow = $activeCountResult->fetch_assoc();
-                    $activeCount = $activeCountRow['count'];
-
-                    // Fetch the number of rows in the 'inactive' table
-                    $inactiveCountResult = $conn->query("SELECT COUNT(*) AS count FROM inactive");
-                    if ($inactiveCountResult === FALSE) {
-                        die("Error fetching inactive count: " . $conn->error);
-                    }
-                    $inactiveCountRow = $inactiveCountResult->fetch_assoc();
-                    $inactiveCount = $inactiveCountRow['count'];
-
-                    // Close the connection
-                    $conn->close();
-
-                    // Calculate the total number of rows
-                    $total = $activeCount + $inactiveCount;
-
-                    // Calculate the ratio as a percentage
-                    if ($total > 0) {
-                        $ratio = ($activeCount / $total) * 100;
-                    } else {
-                        $ratio = 0; // If no rows in either table, set ratio to 0
-                    }
-
-                    // Display the ratio
-                    echo  number_format($ratio, 2) . "%" . " activeness" ;
-                ?>
+                    Scan
                   </div>
                 </div>
               </div>
