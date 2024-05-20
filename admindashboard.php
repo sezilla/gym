@@ -26,7 +26,7 @@ include("db_conn.php");
           <div
             class="bg-slate-300 h-full flex w-[270px] flex-col pt-6 max-md:pl-5 px-2"
           >
-            
+            <!--jim logo-->
             <img
             src="images/jimlogo.png"
             />
