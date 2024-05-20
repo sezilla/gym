@@ -256,10 +256,48 @@ include("db_conn.php");
                 <div
                   class="flex grow basis-[0%] flex-col items-stretch self-start"
                 >
-                  <div
-                    class="text-orange-950 text-center text-2xl pt-4 font-bold self-center"
+                <div
+                    class="text-orange-950 text-center text-lg whitespace-nowrap"
                   >
-                    Scan
+                  <a>Activeness</a>
+                  </div>
+                  <div class="text-orange-800 text-center text-4xl font-bold">
+                  <?php
+                                // Fetch the number of rows in the 'active' table
+                                $activeCountResult = $conn->query("SELECT COUNT(*) AS count FROM active");
+                                if ($activeCountResult === FALSE) {
+                                    die("Error fetching active count: " . $conn->error);
+                                }
+                                $activeCountRow = $activeCountResult->fetch_assoc();
+                                $activeCount = $activeCountRow['count'];
+
+                                // Fetch the number of rows in the 'inactive' table
+                                $inactiveCountResult = $conn->query("SELECT COUNT(*) AS count FROM inactive");
+                                if ($inactiveCountResult === FALSE) {
+                                    die("Error fetching inactive count: " . $conn->error);
+                                }
+                                $inactiveCountRow = $inactiveCountResult->fetch_assoc();
+                                $inactiveCount = $inactiveCountRow['count'];
+
+                                // Close the connection
+                                $conn->close();
+
+                                // Calculate the total number of rows
+                                $total = $activeCount + $inactiveCount;
+
+                                // Calculate the ratio as a percentage
+                                if ($total > 0) {
+                                    $ratio = ($activeCount / $total) * 100;
+                                } else {
+                                    $ratio = 0; // If no rows in either table, set ratio to 0
+                                }
+
+                                // Display the ratio
+                                echo number_format($ratio, 2) . "%";
+                            
+
+                            ?>
+
                   </div>
                 </div>
               </div>
@@ -278,10 +316,10 @@ include("db_conn.php");
                   <h2
                     class="text-orange-950 text-center text-xl font-semibold leading-7 self-center max-w-[288px]"
                   >
-                    Month-to-Month
+                    Basic Plan
                   </h2>
                   <p class="text-orange-950 text-base leading-5 self-stretch mt-8">
-                  Monthly gym memberships offer flexibility with lower upfront
+                  Are monthly gym memberships offer flexibility with lower upfront
                   costs, but can be pricier in the long run.
                 </p>
                 <!--<div class="text-orange-950 text-center text-4xl font-bold leading-10 mt-6">
@@ -305,13 +343,12 @@ include("db_conn.php");
                   <h2
                     class="text-orange-950 text-center text-xl font-semibold leading-7 self-center max-w-[288px]"
                   >
-                    Yearly
+                    Standard
                   </h2>
                   <p
                     class="text-orange-950 text-base leading-5 self-stretch mt-8"
                   >
-                  Yearly memberships lock you in for a year but are more
-                  cost-effective and provide an incentive for regular attendance.
+                  For a limited commitment and a lower price, Standard gym membership offers more features than basic.
                   </p>
                   <!--<div
                     class="text-orange-950 text-center text-4xl font-bold leading-10 mt-6"
@@ -336,13 +373,13 @@ include("db_conn.php");
                   <h2
                     class="text-orange-950 text-center text-xl font-semibold leading-7 self-center max-w-[288px]"
                   >
-                    Missed
+                    Premium
                   </h2>
                   <p
                     class="text-orange-950 text-base leading-5 self-stretch mt-8"
                   >
-                    Missed credentials of students who did not claim their
-                    request forms, or that were not made past the deadline.
+                  Are yearly memberships lock you in for a year but are more
+                  cost-effective and provide an incentive for regular attendance.
                   </p>
                   <div
                     class="text-orange-950 text-center text-4xl font-bold leading-10 mt-6"
