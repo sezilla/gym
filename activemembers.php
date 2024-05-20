@@ -27,7 +27,7 @@ $query = mysqli_query($conn, $sql);
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
     <title>Active Members</title>
-    <link rel="icon" type="image/x-icon" href="images/papsicon.png" />
+    <link rel="icon" type="image/x-icon" href="images/jimicon.png" />
     <link rel="stylesheet" href="table.css" type="text/css">
     <link href="/dist/output.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
@@ -38,6 +38,7 @@ $query = mysqli_query($conn, $sql);
         <section
           class="shadow-inner gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0"
         >
+        <!--SIDEBAR-->
         <aside>
           <div
             class="bg-slate-300 h-full flex w-[270px] flex-col pt-6 max-md:pl-5 px-2"

@@ -26,7 +26,7 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
     <title>Register</title>
-    <link rel="icon" type="image/x-icon" href="images/papsicon.png" />
+    <link rel="icon" type="image/x-icon" href="images/jimicon.png" />
     <link rel="stylesheet" href="table.css" type="text/css">
     <link href="/dist/output.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
@@ -37,23 +37,14 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
         <section
           class="shadow-inner gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0"
         >
+        <!--SIDEBAR-->
         <aside>
           <div
-            class="bg-slate-300 h-full flex w-[240px] flex-col pt-6 max-md:pl-5"
+            class="bg-slate-300 h-full flex w-[270px] flex-col pt-6 max-md:pl-5 px-2"
           >
-            <img
-              loading="lazy"
-              srcset="
-                https://cdn.builder.io/api/v1/image/assets/TEMP/e89eee81-b8cb-4838-b24c-009bba65d2d2?apiKey=00d7018a335e46bbabd3ad8844351700&width=100   100w,
-                https://cdn.builder.io/api/v1/image/assets/TEMP/e89eee81-b8cb-4838-b24c-009bba65d2d2?apiKey=00d7018a335e46bbabd3ad8844351700&width=200   200w,
-                https://cdn.builder.io/api/v1/image/assets/TEMP/e89eee81-b8cb-4838-b24c-009bba65d2d2?apiKey=00d7018a335e46bbabd3ad8844351700&width=400   400w,
-                https://cdn.builder.io/api/v1/image/assets/TEMP/e89eee81-b8cb-4838-b24c-009bba65d2d2?apiKey=00d7018a335e46bbabd3ad8844351700&width=800   800w,
-                https://cdn.builder.io/api/v1/image/assets/TEMP/e89eee81-b8cb-4838-b24c-009bba65d2d2?apiKey=00d7018a335e46bbabd3ad8844351700&width=1200 1200w,
-                https://cdn.builder.io/api/v1/image/assets/TEMP/e89eee81-b8cb-4838-b24c-009bba65d2d2?apiKey=00d7018a335e46bbabd3ad8844351700&width=1600 1600w,
-                https://cdn.builder.io/api/v1/image/assets/TEMP/e89eee81-b8cb-4838-b24c-009bba65d2d2?apiKey=00d7018a335e46bbabd3ad8844351700&width=2000 2000w,
-                https://cdn.builder.io/api/v1/image/assets/TEMP/e89eee81-b8cb-4838-b24c-009bba65d2d2?apiKey=00d7018a335e46bbabd3ad8844351700&
-              "
-              class="-[aspect4.03] object-contain object-center w-[149px] overflow-hidden self-center max-w-full"
+            <!--jim logo-->
+          <img
+            src="images/jimlogo.png"
             />
 
             <nav
@@ -83,13 +74,13 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
                 >
                   <img
                   loading="lazy"
-                    src="images/students1.svg"
+                    src="images/Students.svg"
                     class="aspect-square object-center self-stretch max-w-full"
                     alt="Students Icon"
                   />
 
                   <h1
-                    class="text-orange-800 text-lg font-medium self-center whitespace-nowrap my-auto"
+                    class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto"
                   >
                     Register
                   </h1>
@@ -115,17 +106,17 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
               </a>
               <a href="inactivemembers.php">
               <div
-                  class="items-start bg-[#e0e8ed] self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
+                  class="items-start bg-[#e0e8ed] self-stretch flex w-[235px] justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
                   <img
                     loading="lazy"
-                    src="images/Requests.svg"
+                    src="images/requests1.svg"
                     class="aspect-square object-center self-stretch max-w-full"
                     alt="Requests Icon"
                   />
 
                   <h1
-                    class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto"
+                    class="text-orange-800 text-lg font-medium self-center whitespace-nowrap my-auto"
                   >
                     Inactive Members
                   </h1>
