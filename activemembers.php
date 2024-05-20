@@ -241,7 +241,7 @@ $query = mysqli_query($conn, $sql);
         <th class="text-orange-950 font-semibold leading-6">Expiry</th>
         <th class="text-orange-950 font-semibold leading-6">Action</th>
     </tr>
-    <tbody id="showdata">
+    <tbody id="showdata"> 
     <?php 
         while ($row = mysqli_fetch_assoc($query)) { 
             // Determine the number of days and the plan display text based on the plan
