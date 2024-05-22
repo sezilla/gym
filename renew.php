@@ -1,6 +1,7 @@
 <?php
 include("db_conn.php");
 
+
 // Number of rows per page
 $rowsPerPage = 10;
 
@@ -15,65 +16,7 @@ if (isset($_GET['page']) && is_numeric($_GET['page'])) {
 $limitStart = ($currentPage - 1) * $rowsPerPage;
 
 // Fetch data with LIMIT clause
-
-$response = array('success' => false, 'message' => '');
-
-$membershipno = $_GET['updateid'] ?? null;
-
-if(isset($_POST["submit"])){
-    $renewDuration = $_POST['plan'];
-    $expiryDate = date('Y-m-d', strtotime("+$renewDuration months"));
-    $renewDate = date('Y-m-d');
-
-    // Fetch the fullname and contactno based on membershipno
-    $query = "SELECT fullname, contactno FROM active WHERE membershipno = $membershipno";
-    $result = mysqli_query($conn, $query);
-
-    if ($result && mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
-        $fullname = $row['fullname'];
-        $contactno = $row['contactno'];
-    } else {
-        $response['message'] = "Member not found.";
-    }
-
-    $addplan = $_POST['plan'];
-
-    // Fetch current plan from 'active' table
-    $fetchPlanQuery = "SELECT plan FROM active WHERE membershipno = $membershipno";
-    $fetchPlanResult = mysqli_query($conn, $fetchPlanQuery);
-
-    if ($fetchPlanResult && mysqli_num_rows($fetchPlanResult) > 0) {
-        $row = mysqli_fetch_assoc($fetchPlanResult);
-        $currentPlan = $row['plan'];
-
-        // Add the value of 'membershipplan'
-        $newPlan = $addplan + $currentPlan;
-
-        // Update the 'plan' in the 'active' table
-        $updatePlanQuery = "UPDATE active SET plan = $newPlan WHERE membershipno = $membershipno";
-        mysqli_query($conn, $updatePlanQuery);
-
-        $response['success'] = true;
-        $response['message'] = "Membership plan renewed successfully.";
-    } else {
-        $response['message'] = "Active member not found.";
-    }
-}
-
-if ($membershipno) {
-    $fetchMemberQuery = "SELECT * FROM active WHERE membershipno = $membershipno";
-    $fetchMemberResult = $conn->query($fetchMemberQuery);
-
-    if ($fetchMemberResult->num_rows > 0) {
-        $memberDetails = $fetchMemberResult->fetch_assoc();
-    } else {
-        exit();
-    }
-}
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -236,6 +179,24 @@ if ($membershipno) {
             </header>
             
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <?php
 
 if (isset($_POST["submit"])) {
@@ -306,16 +267,6 @@ if (isset($_GET['updateid'])) {
                     <div class="col-md-12">
                         <div class="card card-primary">
 
-
-                        <?php if ($response['success']) : ?>
-                <div class="bg-green-200 text-green-800 p-4 rounded-lg mb-6">
-                    <?php echo $response['message']; ?>
-                </div>
-            <?php elseif (!empty($response['message'])) : ?>
-                <div class="bg-red-200 text-red-800 p-4 rounded-lg mb-6">
-                    <?php echo $response['message']; ?>
-                </div>
-            <?php endif; ?>
 
                             <!--form start-->
 
@@ -483,6 +434,53 @@ if (isset($_GET['updateid'])) {
 </form>
 <!--form end-->
 
+
+
+
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <form method="post" action="" enctype="multipart/form-data">
+                                <div class="card-body">
+                                    <div class="row">
+                                         <div class="col-sm-6">
+                                            <label for="fullname">Full Name</label>
+                                            <input type="text" class="form-control" id="fullname" name="fullname"
+                                                   placeholder="ff" value="<?php echo $memberDetails['fullname']; ?>" disabled>
+                                        </div>
+                                        
+                                    </div>
+
+
+                                    <div class="row mt-3">
+                                        <div class="col-sm-6">
+                                            <label for="contactno">Contact Number</label>
+                                            <input type="tel" class="form-control" id="contactno"
+                                                   name="contactno" placeholder="cc" value="<?php echo $memberDetails['contactno']; ?>" disabled>
+                                        </div> 
+                                    </div>
+                                    </div>
+
+                                    
+                                    </div>
+
+                                    <div class="row mt-3">
+                                    <div class="col-sm-6">
+                                        <label for="plan">Membership Plan</label>
+                                        <select id="plan" name="plan" required>
+                                          <option value="1">Basic (1 Month)</option>
+                                          <option value="2">Premium (3 Months)</option>
+                                          <option value="3">Yearly</option>
+                                        </select>
+                                    </div>
+
+                
+                                </div>
+
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
                         </div>
 
                     </div>
