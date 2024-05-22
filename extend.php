@@ -25,7 +25,7 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
-    <title>Register</title>
+    <title>Extend</title>
     <link rel="icon" type="image/x-icon" href="images/jimicon.png" />
     <link rel="stylesheet" href="table.css" type="text/css">
     <link href="/dist/output.css" rel="stylesheet" />
@@ -107,7 +107,7 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
               </a>
               <a href="inactivemembers.php">
               <div
-                  class="items-start bg-[#e0e8ed] self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
+                  class="items-start bg-[#e0e8ed] self-stretch flex w-[235px] justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
                   <img
                     loading="lazy"
@@ -139,7 +139,7 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
                 class="flex w-full items-center justify-between gap-5 max-md:max-w-full max-md:flex-wrap"
               >
                 <h1 class="text-orange-950 text-4xl font-bold my-auto">
-                  Renewal
+                  Extend
                 </h1>
                 <!--Admin Dropdown-->
               <div class="max-w-lg">
@@ -280,7 +280,7 @@ if (isset($_GET['updateid'])) {
                     <div class="col-md-12">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title"><i class="fas fa-keyboard"></i> Add Members Form</h3>
+                                <h3 class="card-title"><i class="fas fa-keyboard"></i> Extend Membership Plan</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
