@@ -378,20 +378,8 @@ include("db_conn.php");
                   <p
                     class="text-orange-950 text-base leading-5 self-stretch mt-8"
                   >
-                  Are yearly memberships lock you in for a year but are more
-                  cost-effective and provide an incentive for regular attendance.
+                  Yearly memberships commit you for a year, offering cost savings and encouraging regular attendance.
                   </p>
-                  <div
-                    class="text-orange-950 text-center text-4xl font-bold leading-10 mt-6"
-                  >
-                  <?php
-                  /*$sql="Select * from `missed_request`";
-                  $result=mysqli_query($conn,$sql);
-                  if (isset($result)) {
-                    $row = mysqli_num_rows($result);
-                    echo $row;
-                  }*/
-                  ?>
                   </div>
                 </div>
               </div>
