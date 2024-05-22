@@ -192,7 +192,7 @@ if(isset($_POST["submit"])){
         $currentPlan = $row['plan'];
 
         // Add the value of 'membershipplan'
-        $newPlan = $addplan + $currentPlan;
+        $newPlan =  $currentPlan;
 
 
         // Update the 'plan' in the 'active' table
@@ -424,7 +424,7 @@ if (isset($_GET['updateid'])) {
 
 
 
-    <script>
+    <!-- <script>
     $(document).ready(function () {
         function updateTotalAmount() {
             var membershipTypeAmount = parseFloat($('#membershipType option:selected').text().split('-').pop());
@@ -440,7 +440,7 @@ if (isset($_GET['updateid'])) {
 
         updateTotalAmount();
     });
-</script>
+</script> -->
 
 
 
