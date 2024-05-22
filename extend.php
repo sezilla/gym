@@ -358,7 +358,7 @@ if (isset($_GET['updateid'])) {
 
                 <div class="text-[#401b1b] text-base leading-6 whitespace-nowrap">
                 <p><strong>Membership Number:</strong> <?php echo $memberDetails['membershipno'] ?? ''; ?></p>
-                <p><strong>Current Plan:</strong> <?php echo $memberDetails['plan'] ?? ''; ?> months</p>
+                <p><strong>Current Plan:</strong> <?php echo $memberDetails['plan'] ?? ''; ?> month/s</p>
             </div>
 
 
@@ -367,7 +367,6 @@ if (isset($_GET['updateid'])) {
 
                 <button type="submit"
               name="submit" class="justify-center items-center shadow-2xl bg-[#AC644C] flex w-[244px] max-w-full gap-2 mt-10 py-4 rounded-[30px] self-center">
-               
               <h2 class="text-gray-200 text-center text-lg font-extrabold leading-6">Extend</h2>
                 <a href="https://cdn.builder.io/api/v1/image/assets/TEMP/95614cd9-381a-458f-b521-21c69ed9a189?apiKey=00d7018a335e46bbabd3ad8844351700" class="aspect-square object-contain object-center w-[18px] justify-center items-center overflow-hidden self-center shrink-0 max-w-full my-auto">
                   <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/95614cd9-381a-458f-b521-21c69ed9a189?apiKey=00d7018a335e46bbabd3ad8844351700&" alt="" />
