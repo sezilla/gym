@@ -89,35 +89,35 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
               </a>
               <a href="activemembers.php">
                 <div
-                  class="items-start self-stretch flex w-[235px] justify-between gap-5 pl-6 pr-16 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
+                  class="items-start bg-[#e0e8ed] self-stretch flex w-[235px]] justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
                   <img
                   loading="lazy"
-                    src="images/Enrollees.svg"
+                    src="images/enrollees1.svg"
                     class="aspect-square object-center self-stretch max-w-full"
                     alt="Enrollees Icon"
                   />
 
                   <h1
-                    class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto"
+                    class="text-orange-800 text-lg font-medium self-center whitespace-nowrap my-auto"
                   >
                     Active Members
                   </h1>
                 </div>
               </a>
               <a href="inactivemembers.php">
-              <div
-                  class="items-start bg-[#e0e8ed] self-stretch flex w-[235px] justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
+                <div
+                  class="items-start  self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
                   <img
                     loading="lazy"
-                    src="images/requests1.svg"
+                    src="images/Requests.svg"
                     class="aspect-square object-center self-stretch max-w-full"
                     alt="Requests Icon"
                   />
 
                   <h1
-                    class="text-orange-800 text-lg font-medium self-center whitespace-nowrap my-auto"
+                    class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto"
                   >
                     Inactive Members
                   </h1>
