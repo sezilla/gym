@@ -1,7 +1,6 @@
 <?php
 include("db_conn.php");
 
-
 // Number of rows per page
 $rowsPerPage = 10;
 

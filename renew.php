@@ -1,7 +1,6 @@
 <?php
 include("db_conn.php");
 
-
 // Number of rows per page
 $rowsPerPage = 10;
 
@@ -16,6 +15,62 @@ if (isset($_GET['page']) && is_numeric($_GET['page'])) {
 $limitStart = ($currentPage - 1) * $rowsPerPage;
 
 // Fetch data with LIMIT clause
+
+$response = array('success' => false, 'message' => '');
+
+$membershipno = $_GET['updateid'] ?? null;
+
+if(isset($_POST["submit"])){
+    $renewDuration = $_POST['plan'];
+    $expiryDate = date('Y-m-d', strtotime("+$renewDuration months"));
+    $renewDate = date('Y-m-d');
+
+    // Fetch the fullname and contactno based on membershipno
+    $query = "SELECT fullname, contactno FROM active WHERE membershipno = $membershipno";
+    $result = mysqli_query($conn, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $fullname = $row['fullname'];
+        $contactno = $row['contactno'];
+    } else {
+        $response['message'] = "Member not found.";
+    }
+
+    $addplan = $_POST['plan'];
+
+    // Fetch current plan from 'active' table
+    $fetchPlanQuery = "SELECT plan FROM active WHERE membershipno = $membershipno";
+    $fetchPlanResult = mysqli_query($conn, $fetchPlanQuery);
+
+    if ($fetchPlanResult && mysqli_num_rows($fetchPlanResult) > 0) {
+        $row = mysqli_fetch_assoc($fetchPlanResult);
+        $currentPlan = $row['plan'];
+
+        // Add the value of 'membershipplan'
+        $newPlan = $addplan + $currentPlan;
+
+        // Update the 'plan' in the 'active' table
+        $updatePlanQuery = "UPDATE active SET plan = $newPlan WHERE membershipno = $membershipno";
+        mysqli_query($conn, $updatePlanQuery);
+
+        $response['success'] = true;
+        $response['message'] = "Membership plan extended successfully.";
+    } else {
+        $response['message'] = "Active member not found.";
+    }
+}
+
+if ($membershipno) {
+    $fetchMemberQuery = "SELECT * FROM active WHERE membershipno = $membershipno";
+    $fetchMemberResult = $conn->query($fetchMemberQuery);
+
+    if ($fetchMemberResult->num_rows > 0) {
+        $memberDetails = $fetchMemberResult->fetch_assoc();
+    } else {
+        exit();
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -37,97 +92,40 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
         <section
           class="shadow-inner gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0"
         >
-        <!--SIDEBAR-->
-        <aside>
-          <div
-            class="bg-slate-300 h-full flex w-[270px] flex-col pt-6 max-md:pl-5 px-2"
-          >
-            <!--jim logo-->
-          <img
-            src="images/jimlogo.png"
-            />
-
-            <nav
-              class="items-start self-stretch flex flex-col w-full pl-7 mt-10 mb-96 pb-4 max-md:my-10"
-            >
-              <a href="adminDashboard.php">
-                <div
-                  class="items-start self-stretch flex w-full justify-between gap-5 pl-6 pr-16 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
-                >
-                  <img
-                    loading="lazy"
-                    src="images/dashboard1.svg"
-                    class="aspect-square object-center self-stretch max-w-full"
-                    alt="Dashboard Icon"
-                  />
-
-                  <h1
-                    class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto"
-                  >
-                    Dashboard
-                  </h1>
-                </div>
-              </a>
-              <a href="register.php">
-                <div
-                class="items-start self-stretch flex w-full justify-between gap-5 pl-6 pr-16 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
-                >
-                  <img
-                  loading="lazy"
-                    src="images/Students.svg"
-                    class="aspect-square object-center self-stretch max-w-full"
-                    alt="Students Icon"
-                  />
-
-                  <h1
-                    class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto"
-                  >
-                    Register
-                  </h1>
-                </div>
-              </a>
-              <a href="activemembers.php">
-                <div
-                  class="items-start self-stretch flex w-full justify-between gap-5 pl-6 pr-16 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
-                >
-                  <img
-                  loading="lazy"
-                    src="images/Enrollees.svg"
-                    class="aspect-square object-center self-stretch max-w-full"
-                    alt="Enrollees Icon"
-                  />
-
-                  <h1
-                    class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto"
-                  >
-                    Active Members
-                  </h1>
-                </div>
-              </a>
-              <a href="inactivemembers.php">
-              <div
-                  class="items-start bg-[#e0e8ed] self-stretch flex w-[235px] justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
-                >
-                  <img
-                    loading="lazy"
-                    src="images/requests1.svg"
-                    class="aspect-square object-center self-stretch max-w-full"
-                    alt="Requests Icon"
-                  />
-
-                  <h1
-                    class="text-orange-800 text-lg font-medium self-center whitespace-nowrap my-auto"
-                  >
-                    Inactive Members
-                  </h1>
-                </div>
-              </a>
-               
-            
-             
-            </nav>
-          </div>
+                <!--SIDEBAR-->
+                <aside>
+            <div class="bg-slate-300 h-full flex w-[270px] flex-col pt-6 max-md:pl-5 px-2">
+                <!--jim logo-->
+                <img src="images/jimlogo.png" />
+                <nav class="items-start self-stretch flex flex-col w-full pl-7 mt-10 mb-96 pb-4 max-md:my-10">
+                    <a href="adminDashboard.php">
+                        <div class="items-start self-stretch flex w-full justify-between gap-5 pl-6 pr-16 py-4 rounded-[40px_0px_0px_40px] max-md:px-5">
+                            <img loading="lazy" src="images/dashboard1.svg" class="aspect-square object-center self-stretch max-w-full" alt="Dashboard Icon" />
+                            <h1 class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto">Dashboard</h1>
+                        </div>
+                    </a>
+                    <a href="register.php">
+                        <div class="items-start self-stretch flex w-full justify-between gap-5 pl-6 pr-16 py-4 rounded-[40px_0px_0px_40px] max-md:px-5">
+                            <img loading="lazy" src="images/Students.svg" class="aspect-square object-center self-stretch max-w-full" alt="Students Icon" />
+                            <h1 class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto">Register</h1>
+                        </div>
+                    </a>
+                    <a href="activemembers.php">
+                        <div class="items-start bg-[#e0e8ed] self-stretch flex w-[235px]] justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5">
+                            <img loading="lazy" src="images/enrollees1.svg" class="aspect-square object-center self-stretch max-w-full" alt="Enrollees Icon" />
+                            <h1 class="text-orange-800 text-lg font-medium self-center whitespace-nowrap my-auto">Active Members</h1>
+                        </div>
+                    </a>
+                    <a href="inactivemembers.php">
+                        <div class="items-start self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5">
+                            <img loading="lazy" src="images/Requests.svg" class="aspect-square object-center self-stretch max-w-full" alt="Requests Icon" />
+                            <h1 class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto">Inactive Members</h1>
+                        </div>
+                    </a>
+                </nav>
+            </div>
         </aside>
+        <!--SIDEBAR END-->
           <main
             class="flex flex-col items-stretch w-[76%] ml-10 max-md:w-full max-md:ml-0"
           >
@@ -272,6 +270,16 @@ if (isset($_GET['updateid'])) {
 
 
                             <!--form start-->
+
+            <?php if ($response['success']) : ?>
+                <div class="bg-green-200 text-green-800 p-4 rounded-lg mb-6">
+                    <?php echo $response['message']; ?>
+                </div>
+            <?php elseif (!empty($response['message'])) : ?>
+                <div class="bg-red-200 text-red-800 p-4 rounded-lg mb-6">
+                    <?php echo $response['message']; ?>
+                </div>
+            <?php endif; ?>
 
 <form method="post" action="" enctype="multipart/form-data"> 
 
@@ -436,55 +444,7 @@ if (isset($_GET['updateid'])) {
 
 </form>
 <!--form end-->
-
-
-
-
-                            <!-- /.card-header -->
-                            <!-- form start -->
-                            <form method="post" action="" enctype="multipart/form-data">
-                                <div class="card-body">
-                                    <div class="row">
-                                         <div class="col-sm-6">
-                                            <label for="fullname">Full Name</label>
-                                            <input type="text" class="form-control" id="fullname" name="fullname"
-                                                   placeholder="ff" value="<?php echo $memberDetails['fullname']; ?>" disabled>
-                                        </div>
-                                        
-                                    </div>
-
-
-                                    <div class="row mt-3">
-                                        <div class="col-sm-6">
-                                            <label for="contactno">Contact Number</label>
-                                            <input type="tel" class="form-control" id="contactno"
-                                                   name="contactno" placeholder="cc" value="<?php echo $memberDetails['contactno']; ?>" disabled>
-                                        </div> 
-                                    </div>
-                                    </div>
-
-                                    
-                                    </div>
-
-                                    <div class="row mt-3">
-                                    <div class="col-sm-6">
-                                        <label for="plan">Membership Plan</label>
-                                        <select id="plan" name="plan" required>
-                                          <option value="1">Basic (1 Month)</option>
-                                          <option value="2">Premium (3 Months)</option>
-                                          <option value="3">Yearly</option>
-                                        </select>
-                                    </div>
-
-                
-                                </div>
-
-                                </div>
-                                <div class="card-footer">
-                                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </form>
-                        </div>
+              </div>
 
                     </div>
 
