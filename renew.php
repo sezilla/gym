@@ -25,7 +25,7 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
-    <title>Register</title>
+    <title>Renew Plan</title>
     <link rel="icon" type="image/x-icon" href="images/jimicon.png" />
     <link rel="stylesheet" href="table.css" type="text/css">
     <link href="/dist/output.css" rel="stylesheet" />
@@ -138,7 +138,7 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
                 class="flex w-full items-center justify-between gap-5 max-md:max-w-full max-md:flex-wrap"
               >
                 <h1 class="text-orange-950 text-4xl font-bold my-auto">
-                  Renewal
+                  Membership Plan Renewal
                 </h1>
                 <!--Admin Dropdown-->
               <div class="max-w-lg">
@@ -266,9 +266,178 @@ if (isset($_GET['updateid'])) {
                     <!-- left column -->
                     <div class="col-md-12">
                         <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title"><i class="fas fa-keyboard"></i> Add Members Form</h3>
-                            </div>
+
+
+                            <!--form start-->
+
+<form method="post" action="" enctype="multipart/form-data"> 
+
+
+<section>
+  <div class="flex flex-col items-stretch px-5">
+    <div
+      class="justify-center items-stretch bg-slate-300 flex w-full flex-col -mr-5 mt-12 px-7 py-8 rounded-[30px] max-md:max-w-full max-md:mt-10 max-md:px-5"
+    >
+      <div class="justify-between max-md:max-w-full">
+
+<!--member details-->
+
+<h2 class="text-2xl font-bold mb-10">Member Details</h2>
+
+        <div
+          class="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0"
+        >
+
+
+        
+          <div
+            class="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0"
+          >
+            <div class="items-stretch flex grow flex-col max-md:mt-10">
+              
+            <label
+                for="fullname"
+                class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap"
+                >Full Name
+                </label>
+
+              <input
+                type="text"
+                name="fullname"
+                id="fullname"
+                class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1"
+                placeholder="ff" value="<?php echo $memberDetails['fullname']; ?>" disabled>
+
+              
+            </div>
+          </div>
+          <div
+            class="flex flex-col items-stretch w-[35%] ml-5 max-md:w-full max-md:ml-0"
+          >
+            <div class="items-stretch flex grow flex-col max-md:mt-10">
+              <label
+                for="contactno"
+                class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap"
+                >Contact Number</label
+              >
+              <input
+                id="contactno"
+                name="contactno"
+                class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1"
+                placeholder="cc" value="<?php echo $memberDetails['contactno']; ?>" disabled
+              />
+            </div>
+          </div>
+
+
+
+          
+          
+          <div
+            class="flex flex-col items-stretch w-[33%] ml-5 max-md:w-full max-md:ml-0"
+          >
+
+<!--membership plan-->
+            <div class="items-stretch flex grow flex-col max-md:mt-10">
+            <label
+                for="yr_sec"
+                class="text-[#401b1b] text-base font-bold leading-6 whitespace-nowrap"
+                >Membership Plan</label
+              >
+
+              <div
+                class="w-88 relative"
+              >
+                <select
+                  type="text"
+                  id="plan"
+                  name="plan"
+                  placeholder="Your Plan"
+                  class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1"                        autocomplete="off"
+                  required>
+                  <option value="1">Basic (1 Month)</option>
+                  <option value="3">Standard (3 Months)</option>
+                  <option value="12">Premium (1 Year)</option>
+                
+                </select>
+
+                <div
+                  id="dropdown_yr_sec"
+                  class="w-full h-60 border border-gray-300 rounded-md bg-[#eff0f2] absolute overflow-y-auto hidden"
+                ></div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="justify-between mt-10 max-md:max-w-full">
+        <div
+          class="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0"
+        >
+          <div
+            class="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0"
+          >
+            <div class="items-stretch flex grow flex-col max-md:mt-10">
+              
+              
+              </div>
+            </div>
+          </div>
+
+          
+
+          <div class="text-[#401b1b] text-base leading-6 whitespace-nowrap">
+          <p><strong>Membership Number:</strong> <?php echo $memberDetails['membershipno'] ?? ''; ?></p>
+          <p><strong>Current Plan:</strong> <?php echo $memberDetails['plan'] ?? ''; ?> months</p>
+      </div>
+
+
+
+          <!--button-->
+
+          <button type="submit"
+        name="submit" class="justify-center items-center shadow-2xl bg-[#AC644C] flex w-[244px] max-w-full gap-2 mt-10 py-4 rounded-[30px] self-center">
+         
+        <h2 class="text-gray-200 text-center text-lg font-extrabold leading-6">Renew</h2>
+          <a href="https://cdn.builder.io/api/v1/image/assets/TEMP/95614cd9-381a-458f-b521-21c69ed9a189?apiKey=00d7018a335e46bbabd3ad8844351700" class="aspect-square object-contain object-center w-[18px] justify-center items-center overflow-hidden self-center shrink-0 max-w-full my-auto">
+            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/95614cd9-381a-458f-b521-21c69ed9a189?apiKey=00d7018a335e46bbabd3ad8844351700&" alt="" />
+          </a>
+        </button>
+
+
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="flex flex-col items-stretch px-5">
+    <div
+      class="justify-center items-stretch flex w-full flex-col -mr-5 mt-12 px-7 py-8 rounded-[30px] max-md:max-w-full max-md:mt-10 max-md:px-5"
+    >
+      
+        
+      </div>
+
+      
+
+      
+    </div>
+    
+
+
+</form>
+<!--form end-->
+
+
+
+
                             <!-- /.card-header -->
                             <!-- form start -->
                             <form method="post" action="" enctype="multipart/form-data">

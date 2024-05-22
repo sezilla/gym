@@ -133,7 +133,7 @@ if ($membershipno) {
         <main class="flex flex-col items-stretch w-[76%] ml-10 max-md:w-full max-md:ml-0">
             <header class="flex flex-col items-stretch mt-8 mb-10 max-md:max-w-full max-md:mt-10">
                 <div class="flex w-full items-center justify-between gap-5 max-md:max-w-full max-md:flex-wrap">
-                    <h1 class="text-orange-950 text-4xl font-bold my-auto">Extend Membership Plan</h1>
+                    <h1 class="text-orange-950 text-4xl font-bold my-auto">Membership Plan Extension</h1>
                     <!--Admin Dropdown-->
                     <div class="max-w-lg">
                         <button class="text-[#424242] bg-transparent hover:bg-transparent focus:ring-4 focus:ring-transparent font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button" data-dropdown-toggle="dropdown">Account</button>
