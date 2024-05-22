@@ -203,11 +203,9 @@ if(isset($_POST["submit"])){
     } else {
         // Handle error if the membership number is not found
         $response['message'] = "Active member not found.";
-        echo json_encode($response);
         exit();
     }
     
-    echo json_encode($response);
     
 }
 
