@@ -232,9 +232,12 @@ if(isset($_POST["submit"])){
         // Delete from inactive table
         $deleteQuery = "DELETE FROM inactive WHERE membershipno = '$membershipno'";
         mysqli_query($conn, $deleteQuery);
+        $response['success'] = true;
+        $response['message'] = "Membership plan renew successfully.";
         
     } else {
-  
+      $response['message'] = "Active member not found.";
+      exit();
     }
     
     echo json_encode($response);
