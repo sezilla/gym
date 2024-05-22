@@ -245,9 +245,17 @@ if (isset($_GET['updateid'])) {
             class="justify-center items-stretch bg-slate-300 flex w-full flex-col -mr-5 mt-12 px-7 py-8 rounded-[30px] max-md:max-w-full max-md:mt-10 max-md:px-5"
           >
             <div class="justify-between max-md:max-w-full">
+
+<!--member details-->
+
+<h2 class="text-2xl font-bold mb-10">Member Details</h2>
+
               <div
                 class="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0"
               >
+
+
+              
                 <div
                   class="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0"
                 >
@@ -346,11 +354,9 @@ if (isset($_GET['updateid'])) {
                   </div>
                 </div>
 
-                <!--member details-->
-
+                
 
                 <div class="text-[#401b1b] text-base leading-6 whitespace-nowrap">
-                <h2 class="text-2xl font-bold">Member Details</h2>
                 <p><strong>Membership Number:</strong> <?php echo $memberDetails['membershipno'] ?? ''; ?></p>
                 <p><strong>Current Plan:</strong> <?php echo $memberDetails['plan'] ?? ''; ?> months</p>
             </div>
@@ -360,7 +366,7 @@ if (isset($_GET['updateid'])) {
                 <!--button-->
 
                 <button type="submit"
-              name="submit" class="justify-center items-center shadow-2xl bg-[#AC644C] flex w-[244px] max-w-full gap-2 mt-10 px-12 py-7 rounded-[40px] self-center max-md:mt-10 max-md:px-5">
+              name="submit" class="justify-center items-center shadow-2xl bg-[#AC644C] flex w-[244px] max-w-full gap-2 mt-10 px-7 py-7 rounded-[30px] self-center">
                
               <h2 class="text-gray-200 text-center text-lg font-extrabold leading-6">Extend</h2>
                 <a href="https://cdn.builder.io/api/v1/image/assets/TEMP/95614cd9-381a-458f-b521-21c69ed9a189?apiKey=00d7018a335e46bbabd3ad8844351700" class="aspect-square object-contain object-center w-[18px] justify-center items-center overflow-hidden self-center shrink-0 max-w-full my-auto">
