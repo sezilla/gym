@@ -391,8 +391,7 @@ if (isset($_GET['updateid'])) {
           
 
           <div class="text-[#401b1b] text-base leading-6 whitespace-nowrap">
-          <p><strong>Membership Number:</strong> <?php echo $memberDetails['membershipno'] ?? ''; ?></p>
-          <p><strong>Current Plan:</strong> <?php echo $memberDetails['plan'] ?? ''; ?> months</p>
+          <p><strong>Old Membership Number:</strong> <?php echo $memberDetails['membershipno'] ?? ''; ?></p>
       </div>
 
 
@@ -435,53 +434,6 @@ if (isset($_GET['updateid'])) {
 </form>
 <!--form end-->
 
-
-
-
-                            <!-- /.card-header -->
-                            <!-- form start -->
-                            <form method="post" action="" enctype="multipart/form-data">
-                                <div class="card-body">
-                                    <div class="row">
-                                         <div class="col-sm-6">
-                                            <label for="fullname">Full Name</label>
-                                            <input type="text" class="form-control" id="fullname" name="fullname"
-                                                   placeholder="ff" value="<?php echo $memberDetails['fullname']; ?>" disabled>
-                                        </div>
-                                        
-                                    </div>
-
-
-                                    <div class="row mt-3">
-                                        <div class="col-sm-6">
-                                            <label for="contactno">Contact Number</label>
-                                            <input type="tel" class="form-control" id="contactno"
-                                                   name="contactno" placeholder="cc" value="<?php echo $memberDetails['contactno']; ?>" disabled>
-                                        </div> 
-                                    </div>
-                                    </div>
-
-                                    
-                                    </div>
-
-                                    <div class="row mt-3">
-                                    <div class="col-sm-6">
-                                        <label for="plan">Membership Plan</label>
-                                        <select id="plan" name="plan" required>
-                                          <option value="1">Basic (1 Month)</option>
-                                          <option value="2">Premium (3 Months)</option>
-                                          <option value="3">Yearly</option>
-                                        </select>
-                                    </div>
-
-                
-                                </div>
-
-                                </div>
-                                <div class="card-footer">
-                                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </form>
                         </div>
 
                     </div>
