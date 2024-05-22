@@ -82,7 +82,7 @@ if ($membershipno) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
-    <title>Extend</title>
+    <title>Extend Plan</title>
     <link rel="icon" type="image/x-icon" href="images/jimicon.png" />
     <link rel="stylesheet" href="table.css" type="text/css">
     <link href="/dist/output.css" rel="stylesheet" />
@@ -133,7 +133,7 @@ if ($membershipno) {
         <main class="flex flex-col items-stretch w-[76%] ml-10 max-md:w-full max-md:ml-0">
             <header class="flex flex-col items-stretch mt-8 mb-10 max-md:max-w-full max-md:mt-10">
                 <div class="flex w-full items-center justify-between gap-5 max-md:max-w-full max-md:flex-wrap">
-                    <h1 class="text-orange-950 text-4xl font-bold my-auto">Extend</h1>
+                    <h1 class="text-orange-950 text-4xl font-bold my-auto">Extend Membership Plan</h1>
                     <!--Admin Dropdown-->
                     <div class="max-w-lg">
                         <button class="text-[#424242] bg-transparent hover:bg-transparent focus:ring-4 focus:ring-transparent font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button" data-dropdown-toggle="dropdown">Account</button>
@@ -234,9 +234,6 @@ if (isset($_GET['updateid'])) {
                     <!-- left column -->
                     <div class="col-md-12">
                         <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title"><i class="fas fa-keyboard"></i> Extend Membership Plan</h3>
-                            </div>
 <!--form start-->
 
 <form method="post" action="" enctype="multipart/form-data"> 
@@ -289,6 +286,11 @@ if (isset($_GET['updateid'])) {
                     />
                   </div>
                 </div>
+
+
+
+                
+                
                 <div
                   class="flex flex-col items-stretch w-[33%] ml-5 max-md:w-full max-md:ml-0"
                 >
@@ -344,10 +346,21 @@ if (isset($_GET['updateid'])) {
                   </div>
                 </div>
 
+                <!--member details-->
+
+
+                <div class="text-[#401b1b] text-base leading-6 whitespace-nowrap">
+                <h2 class="text-2xl font-bold">Member Details</h2>
+                <p><strong>Membership Number:</strong> <?php echo $memberDetails['membershipno'] ?? ''; ?></p>
+                <p><strong>Current Plan:</strong> <?php echo $memberDetails['plan'] ?? ''; ?> months</p>
+            </div>
+
+
+
                 <!--button-->
 
                 <button type="submit"
-              name="submit" class="justify-center items-center shadow-2xl bg-[#AC644C] flex w-[244px] max-w-full gap-2 mt-20 px-12 py-7 rounded-[40px] self-center max-md:mt-10 max-md:px-5">
+              name="submit" class="justify-center items-center shadow-2xl bg-[#AC644C] flex w-[244px] max-w-full gap-2 mt-10 px-12 py-7 rounded-[40px] self-center max-md:mt-10 max-md:px-5">
                
               <h2 class="text-gray-200 text-center text-lg font-extrabold leading-6">Extend</h2>
                 <a href="https://cdn.builder.io/api/v1/image/assets/TEMP/95614cd9-381a-458f-b521-21c69ed9a189?apiKey=00d7018a335e46bbabd3ad8844351700" class="aspect-square object-contain object-center w-[18px] justify-center items-center overflow-hidden self-center shrink-0 max-w-full my-auto">
