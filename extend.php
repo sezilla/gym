@@ -237,6 +237,17 @@ if (isset($_GET['updateid'])) {
                     <!-- left column -->
                     <div class="col-md-12">
                         <div class="card card-primary">
+
+            <?php if ($response['success']) : ?>
+                <div class="bg-slate-300 text-slate-500 p-4 rounded-lg mb-6">
+                    <?php echo $response['message']; ?>
+                </div>
+            <?php elseif (!empty($response['message'])) : ?>
+                <div class="bg-red-200 text-red-800 p-4 rounded-lg mb-6">
+                    <?php echo $response['message']; ?>
+                </div>
+            <?php endif; ?>
+
 <!--form start-->
 
 <form method="post" action="" enctype="multipart/form-data"> 
