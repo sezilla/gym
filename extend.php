@@ -198,6 +198,8 @@ if(isset($_POST["submit"])){
         // Update the 'plan' in the 'active' table
         $updatePlanQuery = "UPDATE active SET plan = $newPlan WHERE membershipno = $membershipno";
         mysqli_query($conn, $updatePlanQuery);
+        $response['success'] = true;
+        $response['message'] = "Membership plan extended successfully.";
     } else {
         // Handle error if the membership number is not found
         $response['message'] = "Active member not found.";
@@ -206,6 +208,7 @@ if(isset($_POST["submit"])){
     }
     
     echo json_encode($response);
+    
 }
 
 
