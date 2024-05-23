@@ -428,10 +428,10 @@ $query = mysqli_query($conn, $sql);
           ?-->
           <?php 
           if (isset($_GET['order'])){
-            $sql = "SELECT fullname, membershipno, contactno from inactive ORDER BY order $sort_order LIMIT $limitStart, $rowsPerPage";
+            $sql = "SELECT fullname, membershipno, contactno from inactive ORDER BY contactno $sort_order LIMIT $limitStart, $rowsPerPage";
           }
           else if (isset($_GET['progvalue'])){
-            $sql = "SELECT fullname, membershipno, contactno  from inactive WHERE fullname = '$fullname' LIMIT $limitStart, $rowsPerPage";
+            $sql = "SELECT fullname, membershipno, contactno from inactive WHERE fullname = '$fullname' LIMIT $limitStart, $rowsPerPage";
           }
           else {
             $sql = "SELECT fullname, membershipno, contactno from inactive LIMIT $limitStart, $rowsPerPage";
@@ -539,13 +539,6 @@ $query = mysqli_query($conn, $sql);
             document.getElementById("sortDropdown").classList.toggle("show");
           }
 
-          function YLdropdown() {
-            document.getElementById("ylDropdown").classList.toggle("show");
-          }
-
-          function PROGRAMdropdown() {
-            document.getElementById("programDropdown").classList.toggle("show");
-          }
 
           // Close the dropdown menu if the user clicks outside of it
           window.onclick = function (event) {

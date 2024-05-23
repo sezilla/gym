@@ -1,6 +1,11 @@
 <?php
 include("db_conn.php");
 
+$sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
+
+if (isset($_GET['progvalue'])) {
+  $program = $_GET['progvalue'];
+}
 // Number of rows per page
 $rowsPerPage = 10;
 
@@ -180,7 +185,7 @@ $query = mysqli_query($conn, $sql);
               </div>
             </header>
             
-            <div class="flex items-stretch justify-between gap-5">
+            <class="flex items-stretch justify-between gap-5">
               <div class="bg-zinc-100 rounded-[40px] w-[300px] h-[40px] shadow-md">
                 <div class="items-stretch flex gap-4 rounded-3xl">
                   <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/75453035-f6ab-4cc0-b8e2-9e687ed98ce1?apiKey=949dc02d5acc420a9a54e7e811a36e3e&" 
@@ -191,39 +196,24 @@ $query = mysqli_query($conn, $sql);
                   </div>
 
                 </div>
+              <!-- </div>
+              <div id="dropdown" class="items-center w-[125px] h-[40px] flex px-5 py-0.5 rounded-[40px] 
+                border-2 border-solid border-stone-500">
+              <div class="justify-center items-center flex w-[84px] max-w-full gap-4">
+                <div class="text-stone-500 text-lg leading-7 my-auto">Sort</div>
+                <button onclick="SORTdropdown()" id="dropbtn"
+                  style="background-image: url('https://cdn.builder.io/api/v1/image/assets/TEMP/b1f4b831-70b4-4724-832d-ea63cec558e5?apiKey=949dc02d5acc420a9a54e7e811a36e3e&')"
+                  class="aspect-square object-contain object-center w-full overflow-hidden shrink-0 flex-1"></button>
               </div>
-              <div class="flex gap-3 px-5">
-                <a href="#" class="justify-center items-center w-[160px] h-[40px] flex px-5 py-2 rounded-[40px] 
-                border-2 border-solid border-stone-500">
-                  <div class="justify-center items-center flex w-[127px] max-w-full gap-4">
-                    <div class="text-stone-500 text-lg leading-7 my-auto">Program</div>
-                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/e2da229c-57b4-4c99-8c1d-dc4f7553e83c?apiKey=949dc02d5acc420a9a54e7e811a36e3e&" 
-                    class="aspect-square object-contain object-center w-8 overflow-hidden self-stretch shrink-0 max-w-full" 
-                    alt="Program Icon" />
-                  </div>
-                </a>
-                <a href="#" class="justify-center items-center w-[175px] h-[40px] flex px-5 py-2 rounded-[40px] 
-                border-2 border-solid border-stone-500">
-                  <div class="justify-center items-center flex gap-4">
-                    <div class="text-stone-500 text-lg leading-7 my-auto">Year Level</div>
-                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/69ecaa31-fac5-449a-96e9-1a4b375c531a?apiKey=949dc02d5acc420a9a54e7e811a36e3e&" 
-                    class="aspect-square object-contain object-center w-8 overflow-hidden self-stretch shrink-0 max-w-full" 
-                    alt="Year Level Icon" />
-                  </div>
-                </a>
-                <a href="#" class="justify-center items-center w-[125px] h-[40px] flex px-5 py-2 rounded-[40px] 
-                border-2 border-solid border-stone-500">
-                  <div class="justify-center items-center flex w-[84px] max-w-full gap-4">
-                    <div class="text-stone-500 text-lg leading-7 my-auto">Sort</div>
-                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/b1f4b831-70b4-4724-832d-ea63cec558e5?apiKey=949dc02d5acc420a9a54e7e811a36e3e&" 
-                    class="aspect-square object-contain object-center w-full overflow-hidden shrink-0 flex-1" 
-                    alt="Sort Icon" />
-                  </div>
-                </a>
-              </div>
+              <div id="sortDropdown" class="dropdown-content">
+                <a href="activemembers.php?column=plan&order=asc">Ascending</a>
+                <a href="activemembers.php?column=plan&order=desc">Descending</a>
+                <a href="activemembers.php">Default</a>
+              </div>  
+            </div> -->
             </div>
 
-
+            <p></p>
             <section
               class="shadow-lg bg-[#faf0eb] flex flex-col mt-10 mb-20 rounded-3xl max-md:max-w-full max-md:mt-10"
             >
@@ -233,6 +223,7 @@ $query = mysqli_query($conn, $sql);
             rounded-3xl">
             <div class="self-center flex w-[100%] max-w-full max-md:flex-wrap justify-evenly mb-5">
 
+            
             <table>
     <tr>
         <th class="text-orange-950 font-semibold leading-6">Full Name.</th>
@@ -381,8 +372,18 @@ $query = mysqli_query($conn, $sql);
 
             }
             
-            
         ?>
+        <?php 
+          if (isset($_GET['order'])){
+            $sql = "SELECT fullname, membershipno, contactno, plan from active ORDER BY plan $sort_order LIMIT $limitStart, $rowsPerPage";
+          }
+          else {
+            $sql = "SELECT fullname, membershipno, contactno from active LIMIT $limitStart, $rowsPerPage";
+          }
+          
+          //$sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from inactive";
+          
+          $result = $conn-> query($sql);   ?>
 
         <tr>
             <td><?php echo htmlspecialchars($row["fullname"]); ?></td>
@@ -446,6 +447,32 @@ $query = mysqli_query($conn, $sql);
      });
    });
   });
+
+        function SORTdropdown() {
+            document.getElementById("sortDropdown").classList.toggle("show");
+          }
+
+          function YLdropdown() {
+            document.getElementById("ylDropdown").classList.toggle("show");
+          }
+
+          function PROGRAMdropdown() {
+            document.getElementById("programDropdown").classList.toggle("show");
+          }
+
+          // Close the dropdown menu if the user clicks outside of it
+          window.onclick = function (event) {
+            if (!event.target.matches('#dropbtn')) {
+              var dropdowns = document.getElementsByClassName("dropdown-content");
+              var i;
+              for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                  openDropdown.classList.remove('show');
+                }
+              }
+            }
+          }
 </script>
 </body>
 </html>
