@@ -9,7 +9,7 @@ include("db_conn.php");
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Dashboard</title>
+    <title>Cancel</title>
     <link rel="icon" type="image/x-icon" href="images/jimicon.png" />
     <link href="/dist/output.css" rel="stylesheet" />
     <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
@@ -27,39 +27,35 @@ include("db_conn.php");
             class="bg-slate-300 h-full flex w-[270px] flex-col pt-6 max-md:pl-5 px-2"
           >
             <!--jim logo-->
-            <img
+          <img
             src="images/jimlogo.png"
             />
 
             <nav
               class="items-start self-stretch flex flex-col w-full pl-7 mt-10 mb-96 pb-4 max-md:my-10"
             >
-            <a href="adminDashboard.php">
+              <a href="adminDashboard.php">
                 <div
-                  class="items-start bg-[#e0e8ed] self-stretch flex w-[235px] justify-between gap-5 pl-6 pr-16 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
+                  class="items-start self-stretch flex w-full justify-between gap-5 pl-6 pr-16 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
-
-                <!--Dashboard-->
                   <img
                     loading="lazy"
-                    src="images/dashboard.svg"
+                    src="images/dashboard1.svg"
                     class="aspect-square object-center self-stretch max-w-full"
                     alt="Dashboard Icon"
                   />
 
                   <h1
-                    class="text-orange-800 text-lg font-medium self-center whitespace-nowrap my-auto"
+                    class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto"
                   >
                     Dashboard
                   </h1>
                 </div>
               </a>
-              <!--Student-->
               <a href="register.php">
                 <div
                   class="items-start  self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
-
                   <img
                   loading="lazy"
                     src="images/Students.svg"
@@ -74,28 +70,24 @@ include("db_conn.php");
                   </h1>
                 </div>
               </a>
-
-              <!--Active Members-->
               <a href="activemembers.php">
                 <div
-                  class="items-start  self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
+                  class="items-start bg-[#e0e8ed] self-stretch flex w-[235px]] justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
                 >
                   <img
                   loading="lazy"
-                    src="images/Enrollees.svg"
+                    src="images/enrollees1.svg"
                     class="aspect-square object-center self-stretch max-w-full"
                     alt="Enrollees Icon"
                   />
 
                   <h1
-                    class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto"
+                    class="text-orange-800 text-lg font-medium self-center whitespace-nowrap my-auto"
                   >
                     Active Members
                   </h1>
                 </div>
               </a>
-
-              <!--Request-->
               <a href="inactivemembers.php">
                 <div
                   class="items-start  self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5"
@@ -115,6 +107,7 @@ include("db_conn.php");
                 </div>
               </a>
 
+
               
             </nav>
             
@@ -133,7 +126,7 @@ include("db_conn.php");
               class="flex w-full items-center justify-between gap-5 max-md:max-w-full max-md:flex-wrap"
             >
               <h1 class="text-orange-950 text-4xl font-bold my-auto">
-                Dashboard
+                Cancel Subscription
               </h1>
               <!--Admin Dropdown-->
               <div class="max-w-lg">
