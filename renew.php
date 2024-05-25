@@ -1,77 +1,5 @@
 <?php
-include("db_conn.php");
-
-// Number of rows per page
-$rowsPerPage = 10;
-
-// Current page, default to 1
-if (isset($_GET['page']) && is_numeric($_GET['page'])) {
-    $currentPage = $_GET['page'];
-} else {
-    $currentPage = 1;
-}
-
-// Calculate the limit for the SQL query
-$limitStart = ($currentPage - 1) * $rowsPerPage;
-
-// Fetch data with LIMIT clause
-
-$response = array('success' => false, 'message' => '');
-
-$membershipno = $_GET['updateid'] ?? null;
-
-if(isset($_POST["submit"])){
-    $renewDuration = $_POST['plan'];
-    $expiryDate = date('Y-m-d', strtotime("+$renewDuration months"));
-    $renewDate = date('Y-m-d');
-
-    // Fetch the fullname and contactno based on membershipno
-    $query = "SELECT fullname, contactno FROM active WHERE membershipno = $membershipno";
-    $result = mysqli_query($conn, $query);
-
-    if ($result && mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
-        $fullname = $row['fullname'];
-        $contactno = $row['contactno'];
-    } else {
-        $response['message'] = "Member not found.";
-    }
-
-    $addplan = $_POST['plan'];
-
-    // Fetch current plan from 'active' table
-    $fetchPlanQuery = "SELECT plan FROM active WHERE membershipno = $membershipno";
-    $fetchPlanResult = mysqli_query($conn, $fetchPlanQuery);
-
-    if ($fetchPlanResult && mysqli_num_rows($fetchPlanResult) > 0) {
-        $row = mysqli_fetch_assoc($fetchPlanResult);
-        $currentPlan = $row['plan'];
-
-        // Add the value of 'membershipplan'
-        $newPlan = $addplan + $currentPlan;
-
-        // Update the 'plan' in the 'active' table
-        $updatePlanQuery = "UPDATE active SET plan = $newPlan WHERE membershipno = $membershipno";
-        mysqli_query($conn, $updatePlanQuery);
-
-        $response['success'] = true;
-        $response['message'] = "Membership plan extended successfully.";
-    } else {
-        $response['message'] = "Active member not found.";
-    }
-}
-
-if ($membershipno) {
-    $fetchMemberQuery = "SELECT * FROM active WHERE membershipno = $membershipno";
-    $fetchMemberResult = $conn->query($fetchMemberQuery);
-
-    if ($fetchMemberResult->num_rows > 0) {
-        $memberDetails = $fetchMemberResult->fetch_assoc();
-    } else {
-        exit();
-    }
-}
-?>
+include("db_conn.php");?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -231,13 +159,11 @@ if(isset($_POST["submit"])){
         $deleteQuery = "DELETE FROM inactive WHERE membershipno = '$membershipno'";
         mysqli_query($conn, $deleteQuery);
         $response['success'] = true;
-        $response['message'] = "Membership plan renew successfully.";
-        
+        $response['message'] = "Membership plan renew successfully.";        
     } else {
       $response['message'] = "Active member not found.";
       exit();
     }
-    
     echo json_encode($response);
 }
 
@@ -272,7 +198,7 @@ if (isset($_GET['updateid'])) {
                             <!--form start-->
 
             <?php if ($response['success']) : ?>
-                <div class="bg-green-200 text-green-800 p-4 rounded-lg mb-6">
+                <div class="bg-slate-300 text-slate-500 p-4 rounded-lg mb-6">
                     <?php echo $response['message']; ?>
                 </div>
             <?php elseif (!empty($response['message'])) : ?>
