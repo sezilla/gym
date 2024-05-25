@@ -229,7 +229,7 @@ $query = mysqli_query($conn, $sql);
                   </div>
 
 
-                  <div class="flex gap-10 px-5">
+                  <div class="flex gap-3 px-96">
                   <div 
                 id="dropdown" 
                 class="items-center w-[125px] h-[40px] flex px-5 py-0.5 rounded-[40px] 
@@ -247,7 +247,7 @@ $query = mysqli_query($conn, $sql);
                   </div>
 </div>
 
-              <div class="flex gap-20 px-5">
+              <div class="flex gap-3 px-5">
                   <div 
                 id="dropdown" 
                 class="items-center w-[125px] h-[40px] flex px-5 py-0.5 rounded-[40px] 
