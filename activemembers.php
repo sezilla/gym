@@ -1,37 +1,35 @@
 <?php
 include("db_conn.php");
 
-$sortOrder = isset($_GET['sort']) ? $_GET['sort'] : 'planasc';
+// Get sorting parameters from GET request and sanitize them
+$sort_column = 'plan'; // Default sort column
+$sort_order = 'ASC'; // Default sort order
 
-// Determine the SQL ORDER BY clause based on the sort order
-switch ($sortOrder) {
-    case 'plandesc':
-        $orderBy = "ORDER BY CAST(plan AS UNSIGNED) DESC";
-        break;
-    case 'planasc':
-    default:
-        $orderBy = "ORDER BY CAST(plan AS UNSIGNED) ASC";
-        break;
+if (isset($_GET['sort_column']) && isset($_GET['sort_order'])) {
+    $sort_column = $_GET['sort_column'];
+    $sort_order = $_GET['sort_order'];
 }
 
-if (isset($_GET['progvalue'])) {
-  $program = $_GET['progvalue'];
+// Validate sort column and sort order
+$valid_columns = ['plan', 'expire'];
+if (!in_array($sort_column, $valid_columns)) {
+    $sort_column = 'plan';
 }
+
+if ($sort_order != 'ASC' && $sort_order != 'DESC') {
+    $sort_order = 'ASC';
+}
+
 // Number of rows per page
 $rowsPerPage = 10;
 
 // Current page, default to 1
-if (isset($_GET['page']) && is_numeric($_GET['page'])) {
-    $currentPage = $_GET['page'];
-} else {
-    $currentPage = 1;
-}
+$currentPage = isset($_GET['page']) && is_numeric($_GET['page']) ? intval($_GET['page']) : 1;
 
 // Calculate the limit for the SQL query
 $limitStart = ($currentPage - 1) * $rowsPerPage;
 
-// Fetch data with LIMIT clause
-$sql = "SELECT * FROM active LIMIT $limitStart, $rowsPerPage";
+$sql = "SELECT * FROM active ORDER BY $sort_column $sort_order LIMIT $limitStart, $rowsPerPage";
 $query = mysqli_query($conn, $sql);
 ?>
 
@@ -240,7 +238,7 @@ $query = mysqli_query($conn, $sql);
                 class="text-stone-500 text-lg leading-7 my-auto">Plan</div>
                 <button 
                   type="button"
-                  data-dropdown-toggle="sortexpiry" 
+                  data-dropdown-toggle="sortplan" 
                   id="dropbtn"
                   style="background-image: url('https://cdn.builder.io/api/v1/image/assets/TEMP/b1f4b831-70b4-4724-832d-ea63cec558e5?apiKey=949dc02d5acc420a9a54e7e811a36e3e&')"
                   class="aspect-square object-contain object-center w-full overflow-hidden shrink-0 flex-1"></button>
@@ -255,7 +253,7 @@ $query = mysqli_query($conn, $sql);
               <div 
                 class="justify-center items-center flex w-[84px] max-w-full gap-4">
                   <div 
-                class="text-stone-500 text-lg leading-7 my-auto">Plan</div>
+                class="text-stone-500 text-lg leading-7 my-auto">Expy</div>
                 <button 
                   type="button"
                   data-dropdown-toggle="sortexpiry" 
@@ -278,14 +276,29 @@ $query = mysqli_query($conn, $sql);
           
 
               <!-- Dropdown menu -->
+              <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="sortplan">
+                  <div class="dropdown-content">
+                      <ul class="py-1" aria-labelledby="dropdown">
+                          <li>
+                              <a href="?sort_column=plan&sort_order=ASC" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Ascending</a>
+                          </li>
+                          <li>
+                              <a href="?sort_column=plan&sort_order=DESC" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Descending</a>
+                          </li>
+                      </ul>
+                  </div>  
+              </div>
+
+
+              <!-- Dropdown menu -->
               <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="sortexpiry">
                   <div class="dropdown-content">
                       <ul class="py-1" aria-labelledby="dropdown">
                           <li>
-                              <a href="activemembers.php?sort=planasc" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Ascending</a>
+                              <a href="?sort_column=expire&sort_order=ASC" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Ascending</a>
                           </li>
                           <li>
-                              <a href="activemembers.php?sort=plandesc" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Descending</a>
+                              <a href="?sort_column=expire&sort_order=DESC" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Descending</a>
                           </li>
                       </ul>
                   </div>  
@@ -311,6 +324,7 @@ $query = mysqli_query($conn, $sql);
 
             
             <table>
+
     <tr>
         <th class="text-orange-950 font-semibold leading-6">Full Name.</th>
         <th class="text-orange-950 font-semibold leading-6">Membership No.</th>
@@ -322,158 +336,73 @@ $query = mysqli_query($conn, $sql);
     <tbody id="showdata"> 
           
     <?php 
-      $query = mysqli_query($conn, "SELECT * FROM active $orderBy");
-
-        while ($row = mysqli_fetch_assoc($query)) { 
-            // Determine the number of days and the plan display text based on the plan
-            switch ($row["plan"]) {
-              case 1:
-                  $days = 30;
-                  $planText = "1 Month";
-                  break;
-              case 2:
-                  $days = 60;
-                  $planText = "2 Months";
-                  break;
-              case 3:
-                  $days = 90;
-                  $planText = "3 Months";
-                  break;
-              case 4:
-                  $days = 120;
-                  $planText = "4 Months";
-                  break;
-              case 5:
-                  $days = 150;
-                  $planText = "5 Months";
-                  break;
-              case 6:
-                  $days = 180;
-                  $planText = "6 Months";
-                  break;
-              case 7:
-                    $days = 210;
-                    $planText = "7 Month";
-                    break;
-              case 8:
-                    $days = 240;
-                    $planText = "8 Months";
-                    break;
-              case 9:
-                    $days = 270;
-                    $planText = "9 Months";
-                    break;
-              case 10:
-                    $days = 300;
-                    $planText = "10 Months";
-                    break;
-              case 11:
-                    $days = 330;
-                    $planText = "11 Months";
-                    break;
-              case 12:
-                    $days = 360;
-                    $planText = "1 Year";
-                    break;
-
-
-
-                    case 13:
-                      $days = 390;
-                      $planText = "a Year and 1 Month";
-                      break;
-                  case 14:
-                      $days = 420;
-                      $planText = "a Year and 2 Months";
-                      break;
-                  case 15:
-                      $days = 450;
-                      $planText = "a Year and 3 Months";
-                      break;
-                  case 16:
-                      $days = 480;
-                      $planText = "a Year and 4 Months";
-                      break;
-                  case 17:
-                      $days = 510;
-                      $planText = "a Year and 5 Months";
-                      break;
-                  case 18:
-                      $days = 540;
-                      $planText = "a Year and 6 Months";
-                      break;
-                  case 19:
-                        $days = 570;
-                        $planText = "a Year and 7 Month";
-                        break;
-                  case 20:
-                        $days = 600;
-                        $planText = "a Year and 8 Months";
-                        break;
-                  case 21:
-                        $days = 630;
-                        $planText = "a Year and 9 Months";
-                        break;
-                  case 22:
-                        $days = 660;
-                        $planText = "a Year and 10 Months";
-                        break;
-                  case 23:
-                        $days = 690;
-                        $planText = "a Year and 11 Months";
-                        break;
-                  case 24:
-                        $days = 720;
-                        $planText = "2 Years";
-                        break;
-
-              default:
-                  $days = 0; // default case if plan is not 1, 2, or 3
-                  $planText = "Unknown Plan";
-          }
-
-            // Calculate expiry date
-            $createdate = new DateTime($row["createdate"]);
-            $expiryDate = clone $createdate;
-            $expiryDate->modify("+$days days");
-            $expiryDateFormatted = $expiryDate->format('Y-m-d');
-
-            $currentDate = new DateTime();
-            $daysRemaining = $currentDate->diff($expiryDate)->days;
-
-            // Check if expiry date is in the past
-            $currentDate = new DateTime();
-            if ($expiryDate < $currentDate) {
-                // Insert into inactive table
-                $fullname = $row["fullname"];
-                $membershipno = $row["membershipno"];
-                $contactno = $row["contactno"];
-                $plan = $row["plan"];
-
-                $insertQuery = "INSERT INTO inactive (fullname, membershipno, contactno) 
-                                VALUES ('$fullname', '$membershipno', '$contactno')";
-                mysqli_query($conn, $insertQuery);
-
-                // Delete from active table
-                $membershipNoToDelete = $row["membershipno"];
-                $deleteQuery = "DELETE FROM active WHERE membershipno = '$membershipNoToDelete'";
-                mysqli_query($conn, $deleteQuery);
-
-            }
-            
+      while ($row = mysqli_fetch_assoc($query)) {
+        // Determine the number of days and the plan display text based on the plan
+        switch ($row["plan"]) {
+            case 1: $days = 30; $planText = "1 Month"; break;
+            case 2: $days = 60; $planText = "2 Months"; break;
+            case 3: $days = 90; $planText = "3 Months"; break;
+            case 4: $days = 120; $planText = "4 Months"; break;
+            case 5: $days = 150; $planText = "5 Months"; break;
+            case 6: $days = 180; $planText = "6 Months"; break;
+            case 7: $days = 210; $planText = "7 Months"; break;
+            case 8: $days = 240; $planText = "8 Months"; break;
+            case 9: $days = 270; $planText = "9 Months"; break;
+            case 10: $days = 300; $planText = "10 Months"; break;
+            case 11: $days = 330; $planText = "11 Months"; break;
+            case 12: $days = 360; $planText = "1 Year"; break;
+            case 13: $days = 390; $planText = "1 Year and 1 Month"; break;
+            case 14: $days = 420; $planText = "1 Year and 2 Months"; break;
+            case 15: $days = 450; $planText = "1 Year and 3 Months"; break;
+            case 16: $days = 480; $planText = "1 Year and 4 Months"; break;
+            case 17: $days = 510; $planText = "1 Year and 5 Months"; break;
+            case 18: $days = 540; $planText = "1 Year and 6 Months"; break;
+            case 19: $days = 570; $planText = "1 Year and 7 Months"; break;
+            case 20: $days = 600; $planText = "1 Year and 8 Months"; break;
+            case 21: $days = 630; $planText = "1 Year and 9 Months"; break;
+            case 22: $days = 660; $planText = "1 Year and 10 Months"; break;
+            case 23: $days = 690; $planText = "1 Year and 11 Months"; break;
+            case 24: $days = 720; $planText = "2 Years"; break;
+            default: $days = 0; $planText = "Unknown Plan";
+        }
+    
+        // Calculate expiry date
+        $createdate = new DateTime($row["createdate"]);
+        $expiryDate = clone $createdate;
+        $expiryDate->modify("+$days days");
+        $expiryDateFormatted = $expiryDate->format('m-d-Y');
+    
+        $currentDate = new DateTime();
+        $daysRemaining = $currentDate->diff($expiryDate)->days;
+    
+        // Update 'expire' column if needed
+        if ($daysRemaining != $row['expire']) {
+            $updateQuery = "UPDATE active SET expire = ? WHERE membershipno = ?";
+            $stmt = $conn->prepare($updateQuery);
+            $stmt->bind_param('ii', $daysRemaining, $row['membershipno']);
+            $stmt->execute();
+            $stmt->close();
+        }
+    
+        // Check if expiry date is in the past
+        if ($expiryDate < $currentDate) {
+            // Insert into inactive table
+            $fullname = $row["fullname"];
+            $membershipno = $row["membershipno"];
+            $contactno = $row["contactno"];
+            $plan = $row["plan"];
+            $expire = $row["expire"];
+    
+            $insertQuery = "INSERT INTO inactive (fullname, membershipno, contactno) 
+                            VALUES ('$fullname', '$membershipno', '$contactno')";
+            mysqli_query($conn, $insertQuery);
+    
+            // Delete from active table
+            $deleteQuery = "DELETE FROM active WHERE membershipno = '$membershipno'";
+            mysqli_query($conn, $deleteQuery);
+        }
         ?>
-        <?php 
-          if (isset($_GET['order'])){
-            $sql = "SELECT fullname, membershipno, contactno, plan from active ORDER BY plan $sort_order LIMIT $limitStart, $rowsPerPage";
-          }
-          else {
-            $sql = "SELECT fullname, membershipno, contactno from active LIMIT $limitStart, $rowsPerPage";
-          }
-          
-          //$sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from inactive";
-          
-          $result = $conn-> query($sql);   ?>
-
+    
         <tr>
             <td><?php echo htmlspecialchars($row["fullname"]); ?></td>
             <td><?php echo htmlspecialchars($row["membershipno"]); ?></td>
@@ -486,7 +415,9 @@ $query = mysqli_query($conn, $sql);
                 </button>
             </td>
         </tr>
-        <?php } ?>
+        <?php 
+    }
+    ?>
     </tbody>
 </table>
 
@@ -504,17 +435,17 @@ $query = mysqli_query($conn, $sql);
 
     // Previous page button
     if ($currentPage > 1) {
-        echo "<a href='activemembers.php?page=" . ($currentPage - 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Previous</a>";
+        echo "<a href='activemembers.php?page=" . ($currentPage - 1) . "&sort_column=$sort_column&sort_order=$sort_order' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Previous</a>";
     }
 
     // Page numbers
     for ($i = 1; $i <= $totalPages; $i++) {
-        echo "<a href='activemembers.php?page=$i' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>$i</a>";
+        echo "<a href='activemembers.php?page=$i&sort_column=$sort_column&sort_order=$sort_order' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>$i</a>";
     }
 
     // Next page button
     if ($currentPage < $totalPages) {
-        echo "<a href='activemembers.php?page=" . ($currentPage + 1) . "' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Next</a>";
+        echo "<a href='activemembers.php?page=" . ($currentPage + 1) . "&sort_column=$sort_column&sort_order=$sort_order' class='mx-2 px-4 py-2 bg-stone-500 text-white rounded-3xl'>Next</a>";
     }
     ?>
 </div>
