@@ -1,7 +1,18 @@
 <?php
 include("db_conn.php");
 
-$sort_order = isset($_GET['order']) && strtolower($_GET['order']) == 'desc' ? 'DESC' : 'ASC';
+$sortOrder = isset($_GET['sort']) ? $_GET['sort'] : 'planasc';
+
+// Determine the SQL ORDER BY clause based on the sort order
+switch ($sortOrder) {
+    case 'plandesc':
+        $orderBy = "ORDER BY CAST(plan AS UNSIGNED) DESC";
+        break;
+    case 'planasc':
+    default:
+        $orderBy = "ORDER BY CAST(plan AS UNSIGNED) ASC";
+        break;
+}
 
 if (isset($_GET['progvalue'])) {
   $program = $_GET['progvalue'];
@@ -147,6 +158,24 @@ $query = mysqli_query($conn, $sql);
                 <h1 class="text-orange-950 text-4xl font-bold my-auto">
                   Active Members
                 </h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <!--Admin Dropdown-->
               <div class="max-w-lg">
                 <button
@@ -162,13 +191,13 @@ $query = mysqli_query($conn, $sql);
                   class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4"
                   id="dropdown"
                 >
-                  <div class="px-4 py-3">
-                    <span class="block text-sm">Bonnie Green</span>
-                    <span
-                      class="block text-sm font-medium text-gray-900 truncate"
-                      >name@flowbite.com</span
-                    >
-                  </div>
+                        <div class="px-4 py-3">
+                          <span class="block text-sm">Bonnie Green</span>
+                          <span
+                            class="block text-sm font-medium text-gray-900 truncate"
+                            >name@flowbite.com</span
+                          >
+                        </div>
                   <ul class="py-1" aria-labelledby="dropdown">
                     
 
@@ -196,21 +225,55 @@ $query = mysqli_query($conn, $sql);
                   </div>
 
                 </div>
-              <!-- </div>
-              <div id="dropdown" class="items-center w-[125px] h-[40px] flex px-5 py-0.5 rounded-[40px] 
-                border-2 border-solid border-stone-500">
-              <div class="justify-center items-center flex w-[84px] max-w-full gap-4">
-                <div class="text-stone-500 text-lg leading-7 my-auto">Sort</div>
-                <button onclick="SORTdropdown()" id="dropbtn"
+               </div>
+
+
+
+
+
+
+
+
+
+
+
+              
+              <div 
+                id="dropdown" 
+                class="items-center w-[125px] h-[40px] flex px-5 py-0.5 rounded-[40px] 
+                  border-2 border-solid border-stone-500">
+              <div 
+                class="justify-center items-center flex w-[84px] max-w-full gap-4">
+                  <div 
+                class="text-stone-500 text-lg leading-7 my-auto">Plan</div>
+                <button 
+                  type="button"
+                  data-dropdown-toggle="sortexpiry" 
+                  id="dropbtn"
                   style="background-image: url('https://cdn.builder.io/api/v1/image/assets/TEMP/b1f4b831-70b4-4724-832d-ea63cec558e5?apiKey=949dc02d5acc420a9a54e7e811a36e3e&')"
                   class="aspect-square object-contain object-center w-full overflow-hidden shrink-0 flex-1"></button>
+                  </div>
+
+              <!-- Dropdown menu -->
+              <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="sortexpiry">
+                  <div class="dropdown-content">
+                      <ul class="py-1" aria-labelledby="dropdown">
+                          <li>
+                              <a href="activemembers.php?sort=planasc" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Ascending</a>
+                          </li>
+                          <li>
+                              <a href="activemembers.php?sort=plandesc" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Descending</a>
+                          </li>
+                      </ul>
+                  </div>  
               </div>
-              <div id="sortDropdown" class="dropdown-content">
-                <a href="activemembers.php?column=plan&order=asc">Ascending</a>
-                <a href="activemembers.php?column=plan&order=desc">Descending</a>
-                <a href="activemembers.php">Default</a>
-              </div>  
-            </div> -->
+
+
+
+              
+
+
+
             </div>
 
             <p></p>
@@ -234,7 +297,10 @@ $query = mysqli_query($conn, $sql);
         <th class="text-orange-950 font-semibold leading-6">Action</th>
     </tr>
     <tbody id="showdata"> 
+          
     <?php 
+      $query = mysqli_query($conn, "SELECT * FROM active $orderBy");
+
         while ($row = mysqli_fetch_assoc($query)) { 
             // Determine the number of days and the plan display text based on the plan
             switch ($row["plan"]) {
@@ -448,17 +514,43 @@ $query = mysqli_query($conn, $sql);
    });
   });
 
-        function SORTdropdown() {
-            document.getElementById("sortDropdown").classList.toggle("show");
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function sortexpiry() {
+            document.getElementById("sortexpiry").toggle("show");
           }
 
-          function YLdropdown() {
-            document.getElementById("ylDropdown").classList.toggle("show");
+          function sortplan() {
+            document.getElementById("sortplan").toggle("show");
           }
 
-          function PROGRAMdropdown() {
-            document.getElementById("programDropdown").classList.toggle("show");
-          }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
           // Close the dropdown menu if the user clicks outside of it
           window.onclick = function (event) {
