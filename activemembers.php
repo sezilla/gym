@@ -213,8 +213,12 @@ $query = mysqli_query($conn, $sql);
               </div>
               </div>
             </header>
-            
-            <class="flex items-stretch justify-between gap-5">
+
+
+
+
+
+            <div class="flex items-stretch justify-between gap-10 px-5"> 
               <div class="bg-zinc-100 rounded-[40px] w-[300px] h-[40px] shadow-md">
                 <div class="items-stretch flex gap-4 rounded-3xl">
                   <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/75453035-f6ab-4cc0-b8e2-9e687ed98ce1?apiKey=949dc02d5acc420a9a54e7e811a36e3e&" 
@@ -224,21 +228,9 @@ $query = mysqli_query($conn, $sql);
                     <input type = "search" class="bg-zinc-100" id = "getName" placeholder = "Search here..." autocomplete = "off">
                   </div>
 
-                </div>
-               </div>
 
-
-
-
-
-
-
-
-
-
-
-              
-              <div 
+                  <div class="flex gap-10 px-5">
+                  <div 
                 id="dropdown" 
                 class="items-center w-[125px] h-[40px] flex px-5 py-0.5 rounded-[40px] 
                   border-2 border-solid border-stone-500">
@@ -253,6 +245,37 @@ $query = mysqli_query($conn, $sql);
                   style="background-image: url('https://cdn.builder.io/api/v1/image/assets/TEMP/b1f4b831-70b4-4724-832d-ea63cec558e5?apiKey=949dc02d5acc420a9a54e7e811a36e3e&')"
                   class="aspect-square object-contain object-center w-full overflow-hidden shrink-0 flex-1"></button>
                   </div>
+</div>
+
+              <div class="flex gap-20 px-5">
+                  <div 
+                id="dropdown" 
+                class="items-center w-[125px] h-[40px] flex px-5 py-0.5 rounded-[40px] 
+                  border-2 border-solid border-stone-500">
+              <div 
+                class="justify-center items-center flex w-[84px] max-w-full gap-4">
+                  <div 
+                class="text-stone-500 text-lg leading-7 my-auto">Plan</div>
+                <button 
+                  type="button"
+                  data-dropdown-toggle="sortexpiry" 
+                  id="dropbtn"
+                  style="background-image: url('https://cdn.builder.io/api/v1/image/assets/TEMP/b1f4b831-70b4-4724-832d-ea63cec558e5?apiKey=949dc02d5acc420a9a54e7e811a36e3e&')"
+                  class="aspect-square object-contain object-center w-full overflow-hidden shrink-0 flex-1"></button>
+                  </div>
+                  </div>
+</div>
+                </div>
+               </div>
+
+              
+</div>
+
+
+
+
+              
+          
 
               <!-- Dropdown menu -->
               <div class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="sortexpiry">
