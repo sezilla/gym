@@ -181,57 +181,9 @@ include("db_conn.php");
               </div>
             --></div>
           </header>
-         
-          <section class="mt-10">
-            <div
-              class="gap-16 flex max-md:flex-col max-md:items-stretch max-md:gap-0"
-            >
-              <div
-                class="flex flex-col items-stretch w-[398px] h-[325px] max-md:w-full max-md:ml-0"
-              >
-                <div
-                  class="bg-[#eeefea] shadow-md flex flex-col w-full mx-auto p-8 rounded-xl max-md:mt-10 max-md:px-5"
-                >
-                  <h2
-                    class="text-orange-950 text-center text-xl font-semibold leading-7 self-center max-w-[288px]"
-                  >
-                    CANCEL SUBSCRIPTION
-                  </h2>
-                  <p class="text-orange-950 text-base leading-5 self-stretch mt-8">
-                  Are you sure you want to cancel subscription?
-                </p>
 
-                <input
-                type="text"
-                name="fullname"
-                id="fullname"
-                class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1"
-                placeholder="ff" value="<?php echo $memberDetails['fullname']; ?>" disabled>
-                
-
-                <form method="post" action="">
-    <!-- Your other HTML elements -->
-    <button type="submit" name="submit" class="justify-center items-center shadow-2xl bg-[#AC644C] flex w-[244px] max-w-full gap-2 mt-10 py-4 rounded-[30px] self-center" id="yesBtn">
-        <h2 class="text-gray-200 text-center text-lg font-extrabold leading-6">Yes</h2>
-    </button>
-</form>
-
-
-
-        <button type="goback"
-        name="goback" class="justify-center items-center shadow-2xl bg-[#AC644C] flex w-[244px] max-w-full gap-2 mt-10 py-4 rounded-[30px] self-center">
-         
-        <h2 class="text-gray-200 text-center text-lg font-extrabold leading-6">No</h2>
-        <a href="activemembers.php">
-          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/95614cd9-381a-458f-b521-21c69ed9a189?apiKey=00d7018a335e46bbabd3ad8844351700&" alt="" />
-          </a>
-        </button>
           
-                </div>
-              </div>
-
-
-              <?php
+          <?php
 
 // Assuming $conn is your database connection object
 
@@ -290,6 +242,56 @@ if (isset($_GET['removeid'])) {
 }
 
 ?>
+         
+          <section class="mt-10">
+            <div
+              class="gap-16 flex max-md:flex-col max-md:items-stretch max-md:gap-0"
+            >
+              <div
+                class="flex flex-col items-stretch w-[398px] h-[325px] max-md:w-full max-md:ml-0"
+              >
+                <div
+                  class="bg-[#eeefea] shadow-md flex flex-col w-full mx-auto p-8 rounded-xl max-md:mt-10 max-md:px-5"
+                >
+                  <h2
+                    class="text-orange-950 text-center text-xl font-semibold leading-7 self-center max-w-[288px]"
+                  >
+                    CANCEL SUBSCRIPTION
+                  </h2>
+                  <p class="text-orange-950 text-base leading-5 self-stretch mt-8">
+                  Are you sure you want to cancel subscription?
+                </p>
+
+                <input
+                type="text"
+                name="fullname"
+                id="fullname"
+                class="bg-[#eff0f2] mt-3 py-3 px-5 w-full border border-gray-300 p-3 focus:outline-none focus:ring-[#ab644d] focus:ring-1 rounded-[50px] max-md:pl-1"
+                placeholder="ff" value="<?php echo $memberDetails['fullname']; ?>" disabled>
+                
+
+                <form method="post" action="">
+    <!-- Your other HTML elements -->
+    <button type="submit" name="submit" class="justify-center items-center shadow-2xl bg-[#AC644C] flex w-[244px] max-w-full gap-2 mt-10 py-4 rounded-[30px] self-center" id="yesBtn">
+        <h2 class="text-gray-200 text-center text-lg font-extrabold leading-6">Yes</h2>
+    </button>
+</form>
+
+
+
+        <button type="goback"
+        name="goback" class="justify-center items-center shadow-2xl bg-[#AC644C] flex w-[244px] max-w-full gap-2 mt-10 py-4 rounded-[30px] self-center">
+         
+        <h2 class="text-gray-200 text-center text-lg font-extrabold leading-6">No</h2>
+        <a href="activemembers.php">
+          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/95614cd9-381a-458f-b521-21c69ed9a189?apiKey=00d7018a335e46bbabd3ad8844351700&" alt="" />
+          </a>
+        </button>
+          
+                </div>
+              </div>
+
+
 
            
               
