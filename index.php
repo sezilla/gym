@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Log In</title>
-    <link rel="icon" type="image/x-icon" href="images/papsicon.png" />
+    <link rel="icon" type="image/x-icon" href="images/jimicon.png" />
     <link href="/dist/output.css" rel="stylesheet" />
   </head>
   <body
@@ -17,7 +17,7 @@
     >
       <div class="w-full p-8 lg:w-3/5">
         <div class="text-center">
-          <img src="images/PAPS Logo.png" alt="PAPS Logo" class="px-24" />
+          <img src="images/jimlogo.png" alt="PAPS Logo" class="px-24" />
           <p class="mt-2 text-gray-400 font-normal">
             Log in below to access your account
           </p>
@@ -27,7 +27,7 @@
             echo '<div class="alert alert-danger">' . $error_message . '</div>';
             }
         ?>        
-        <form action="login.php" method="POST"> >
+        <form action="login.php" method="POST"> 
           <div class="mt-5">
             <div class="relative mt-6">
               <input
