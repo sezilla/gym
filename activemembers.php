@@ -227,7 +227,7 @@ $query = mysqli_query($conn, $sql);
                   </div>
 
 
-                  <div class="flex gap-3 px-96">
+                  <div class="flex px-80">
                   <div 
                 id="dropdown" 
                 class="items-center w-[125px] h-[40px] flex px-5 py-0.5 rounded-[40px] 
@@ -245,13 +245,13 @@ $query = mysqli_query($conn, $sql);
                   </div>
 </div>
 
-              <div class="flex gap-3 px-5">
+              <div class="flex px-5">
                   <div 
                 id="dropdown" 
-                class="items-center w-[125px] h-[40px] flex px-5 py-0.5 rounded-[40px] 
+                class="items-center w-[130px] h-[40px] flex px-5 py-0.5 rounded-[40px] 
                   border-2 border-solid border-stone-500">
               <div 
-                class="justify-center items-center flex w-[84px] max-w-full gap-4">
+                class="justify-center items-center flex w-[127px] max-w-full gap-4">
                   <div 
                 class="text-stone-500 text-lg leading-7 my-auto">Expy</div>
                 <button 
