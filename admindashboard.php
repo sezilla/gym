@@ -249,8 +249,6 @@ include("db_conn.php");
               <div class="flex items-stretch gap-4">
                 <button
                 type="submit" name="submit" class="justify-center items-center shadow-2xl bg-[#AC644C] flex max-w-full gap-2 px-5 py-5 rounded-full self-center max-md:mt-10 max-md:px-5">
-              <a href="#">
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAKxJREFUSEvVVdEOgCAIhPX/n1w0XTRGoCVq5ZtTuDuQE2HwwsH54QQgInLAFkTcPCJeHCLm3PMBGLm1dKzIVZAOarJL598CYJmaVWnvKpA1f5Iwxen7Mpc5B5Ee6MfxDkDrE7Xi5lmF1eRLPY/xJ6JkHYlcthG979HkPgDeHDDDEnO+czE7aRUtAF2sQvdGKgGANdu0Z9d3zC4MEJmDaomM5D/50SJlKcUOt4odRkXkGW5+V2EAAAAASUVORK5CYII="/>
               </a>
                 </button>
                 <div
