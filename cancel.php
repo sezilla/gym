@@ -238,7 +238,7 @@ if (isset($_GET['removeid'])) {
          
           <section class="mt-10">
             <div
-              class="gap-16 flex max-md:flex-col max-md:items-stretch max-md:gap-0"
+              class="gap-16 flex max-md:flex-col max-md:items-stretch max-md:gap-0 pl-60 pt-10"
             >
               <div
                 class="flex flex-col items-stretch w-[398px] h-[325px] max-md:w-full max-md:ml-0"
@@ -264,23 +264,25 @@ if (isset($_GET['removeid'])) {
                 
 
                 <form method="post" action="">
-    <!-- Your other HTML elements -->
-    <button type="submit" name="submit" class="justify-center items-center shadow-2xl bg-[#AC644C] flex w-[244px] max-w-full gap-2 mt-10 py-4 rounded-[30px] self-center" id="yesBtn">
+    <!-- Your other HTML elements --><div class = "justify-center items-center self-center pl-12">
+    <button type="submit" name="submit" 
+    class="justify-center items-center shadow-2xl bg-[#AC644C] flex w-[244px] max-w-full gap-2 mt-10 py-4 rounded-[30px] self-center" 
+    id="yesBtn">
         <h2 class="text-gray-200 text-center text-lg font-extrabold leading-6">Yes</h2>
     </button>
 </form>
 
 
 
-        <button type="goback"
-        name="goback" class="justify-center items-center shadow-2xl bg-[#AC644C] flex w-[244px] max-w-full gap-2 mt-10 py-4 rounded-[30px] self-center">
+        <button type="goback" name="goback" 
+        class="justify-center items-center shadow-2xl bg-[#AC644C] flex w-[244px] max-w-full gap-2 mt-10 py-4 rounded-[30px] self-center">
          
         <h2 class="text-gray-200 text-center text-lg font-extrabold leading-6">No</h2>
         <a href="activemembers.php">
           <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/95614cd9-381a-458f-b521-21c69ed9a189?apiKey=00d7018a335e46bbabd3ad8844351700&" alt="" />
           </a>
         </button>
-          
+</div>
                 </div>
               </div>
 

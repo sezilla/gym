@@ -248,12 +248,12 @@ $query = mysqli_query($conn, $sql);
               <div class="flex px-5">
                   <div 
                 id="dropdown" 
-                class="items-center w-[130px] h-[40px] flex px-5 py-0.5 rounded-[40px] 
+                class="items-center w-[140px] h-[40px] flex px-5 py-0.5 rounded-[40px] 
                   border-2 border-solid border-stone-500">
               <div 
-                class="justify-center items-center flex w-[127px] max-w-full gap-4">
+                class="justify-center items-center flex w-[120px] max-w-full gap-4">
                   <div 
-                class="text-stone-500 text-lg leading-7 my-auto">Expy</div>
+                class="text-stone-500 text-lg leading-7 my-auto">Expiry</div>
                 <button 
                   type="button"
                   data-dropdown-toggle="sortexpiry" 
@@ -331,7 +331,7 @@ $query = mysqli_query($conn, $sql);
         <th class="text-orange-950 font-semibold leading-6">Contact No.</th>
         <th class="text-orange-950 font-semibold leading-6">Membership Plan</th>
         <th class="text-orange-950 font-semibold leading-6">Expiry</th>
-        <th class="text-orange-950 font-semibold leading-6">Action</th>
+        <th class="text-orange-950 font-semibold leading-6 pl-28">Action</th>
     </tr>
     <tbody id="showdata"> 
           
@@ -511,7 +511,6 @@ $query = mysqli_query($conn, $sql);
                 <button class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-3xl px-4 py-2.5 mr-5'>
                     <a href="extend.php?updateid=<?php echo urlencode($row['membershipno']); ?>" class="text-white">Extend</a>
                 </button>
-            </td>
             <td>
                 <button class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-3xl px-4 py-2.5 mr-5'>
                     <a href="cancel.php?removeid=<?php echo urlencode($row['membershipno']); ?>" class="text-white">Cancel</a>
