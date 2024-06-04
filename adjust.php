@@ -49,7 +49,7 @@ if(isset($_POST["submit"])){
         $currentPlan = $row['plan'];
 
         // Add the value of 'membershipplan'
-        $newPlan = $currentPlan -$addplan;
+        $newPlan = $addplan;
 
         // Update the 'plan' in the 'active' table
         $updatePlanQuery = "UPDATE active SET plan = $newPlan WHERE membershipno = $membershipno";
