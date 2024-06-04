@@ -260,7 +260,7 @@ if (isset($_GET['updateid'])) {
 <!--member details-->
 
 <h2 class="text-2xl font-bold mb-10">Member Details</h2>
-
+      
               <div
                 class="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0"
               >
