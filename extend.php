@@ -368,7 +368,7 @@ if (isset($_GET['updateid'])) {
                 
 
                 <div class="text-[#401b1b] text-base leading-6 whitespace-nowrap">
-                <p><strong>Membership Number:</strong> <?php echo $memberDetails['membershipno'] ?? ''; ?></p>
+                <p><strong>Unique Membership ID:</strong> <?php echo $memberDetails['membershipno'] ?? ''; ?></p>
                 <p><strong>Current Plan:</strong> <?php echo $memberDetails['plan'] ?? ''; ?> month/s</p>
             </div>
 

@@ -39,15 +39,15 @@ include("db_conn.php");?>
                         </div>
                     </a>
                     <a href="activemembers.php">
-                        <div class="items-start bg-[#e0e8ed] self-stretch flex w-[235px]] justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5">
-                            <img loading="lazy" src="images/enrollees1.svg" class="aspect-square object-center self-stretch max-w-full" alt="Enrollees Icon" />
-                            <h1 class="text-orange-800 text-lg font-medium self-center whitespace-nowrap my-auto">Active Members</h1>
+                      <div class="items-start self-stretch flex w-full justify-between gap-5 pl-6 pr-16 py-4 rounded-[40px_0px_0px_40px] max-md:px-5">
+                            <img loading="lazy" src="images/enrollees.svg" class="aspect-square object-center self-stretch max-w-full" alt="Enrollees Icon" />
+                            <h1 class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto">Active Members</h1>
                         </div>
                     </a>
                     <a href="inactivemembers.php">
-                        <div class="items-start self-stretch flex w-full justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5">
-                            <img loading="lazy" src="images/Requests.svg" class="aspect-square object-center self-stretch max-w-full" alt="Requests Icon" />
-                            <h1 class="text-orange-950 text-lg font-medium self-center whitespace-nowrap my-auto">Inactive Members</h1>
+                    <div class="items-start bg-[#e0e8ed] self-stretch flex w-[235px]] justify-between gap-5 pl-6 pr-20 py-4 rounded-[40px_0px_0px_40px] max-md:px-5">
+                            <img loading="lazy" src="images/Requests1.svg" class="aspect-square object-center self-stretch max-w-full" alt="Requests Icon" />
+                            <h1 class="text-orange-800 text-lg font-medium self-center whitespace-nowrap my-auto">Inactive Members</h1>
                         </div>
                     </a>
                 </nav>
@@ -328,7 +328,7 @@ if (isset($_GET['updateid'])) {
           
 
           <div class="text-[#401b1b] text-base leading-6 whitespace-nowrap">
-          <p><strong>Old Membership Number:</strong> <?php echo $memberDetails['membershipno'] ?? ''; ?></p>
+          <p><strong>Unique Membership ID:</strong> <?php echo $memberDetails['membershipno'] ?? ''; ?></p>
       </div>
 
 
@@ -381,26 +381,6 @@ if (isset($_GET['updateid'])) {
         </section>
     </div>
 
-
-
-
-    <script>
-    $(document).ready(function () {
-        function updateTotalAmount() {
-            var membershipTypeAmount = parseFloat($('#membershipType option:selected').text().split('-').pop());
-
-            var renewDuration = parseFloat($('#plan').val());
-
-            var totalAmount = membershipTypeAmount * renewDuration;
-
-            $('#totalAmount').val(totalAmount.toFixed(2));
-        }
-
-        $('#membershipType, #plan').change(updateTotalAmount);
-
-        updateTotalAmount();
-    });
-</script>
 
 
 
