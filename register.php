@@ -176,6 +176,9 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
                 </div>
               </div>
               </div>
+
+              
+
             </header>
             
 
@@ -190,6 +193,8 @@ $limitStart = ($currentPage - 1) * $rowsPerPage;
                 <h2 class="text-orange-950 text-2xl font-bold my-auto">
                   Add Members Form
                 </h2>
+
+                <span>Register a new member by filling out their personal details and selecting a membership plan.</span>
 
       <form class="" method="post" autocomplete="off">
       <section>

@@ -212,7 +212,7 @@ $query = mysqli_query($conn, $sql);
             </nav>
           </div>
         </aside>
-          <main
+        <main
             class="flex flex-col items-stretch w-[76%] ml-10 max-md:w-full max-md:ml-0"
           >
             <header
@@ -221,23 +221,73 @@ $query = mysqli_query($conn, $sql);
               <div
                 class="flex w-full items-center justify-between gap-5 max-md:max-w-full max-md:flex-wrap"
               >
-                <h1 class="text-orange-950 text-4xl font-bold my-auto">
+                <h1 class="text-orange-950 text-4xl font-bold my-auto tooltip">
                   Inactive Members
                 </h1>
-                <div class="max-w-lg">
-                  <button
-                    class="text-[#424242] bg-transparent hover:bg-transparent focus:ring-4 focus:ring-transparent font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
-                    type="button"
-                    data-dropdown-toggle="dropdown"
-                  >
-                    Admin
-                  </button>
-                  <div
+                
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!--Admin Dropdown-->
+              <div class="max-w-lg">
+                <button
+                  class="text-[#424242] bg-transparent hover:bg-transparent focus:ring-4 focus:ring-transparent font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
+                  type="button"
+                  data-dropdown-toggle="dropdown"
+                >
+                  Account
+                </button>
+
+                <!-- Dropdown menu -->
+                <div
                   class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4"
                   id="dropdown"
                 >
-                  
+                        <div class="px-4 py-3">
+                          <span class="block text-sm">Bonnie Green</span>
+                          <span
+                            class="block text-sm font-medium text-gray-900 truncate"
+                            >name@flowbite.com</span
+                          >
+                        </div>
+                  <ul class="py-1" aria-labelledby="dropdown">
+                    
+
+                    <li>
+                      <a
+                        href="index.php"
+                        class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2"
+                        >Sign out</a
+                      >
+                    </li>
+                  </ul>
+                </div>
               </div>
+              </div>
+
+              <span>Total number of INACTIVE members in the gym.</span>
+        
+
+
             </header>
             
             <div class="flex items-stretch justify-between gap-5">

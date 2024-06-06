@@ -148,6 +148,7 @@ if ($membershipno) {
                         </div>
                     </div>
                 </div>
+                <span>Review the available membership plans and choose the new plan that suits the member's needs.</span>
             </header>
 <!--ADMIN ACCOUNT END-->
             

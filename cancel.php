@@ -173,6 +173,8 @@ include("db_conn.php");
                 ></div>
               </div>
             --></div>
+
+            <span>Double-check the member's account details to ensure that the correct membership is being canceled.</span>
           </header>
 
           

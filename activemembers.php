@@ -156,7 +156,6 @@ $query = mysqli_query($conn, $sql);
                 <h1 class="text-orange-950 text-4xl font-bold my-auto tooltip">
                   Active Members
                 </h1>
-                <span class="tooltiptext">Total number of members currently active in the gym.</span>
                 
                 
 
@@ -217,6 +216,7 @@ $query = mysqli_query($conn, $sql);
               </div>
               </div>
 
+              <span>Total number of ACTIVE members in the gym.</span>
         
 
 

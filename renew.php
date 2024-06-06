@@ -102,6 +102,8 @@ include("db_conn.php");?>
                 </div>
               </div>
               </div>
+
+              <span>Select the desired membership plan for the renewal period.</span>
             </header>
             
 
