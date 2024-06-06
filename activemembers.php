@@ -153,9 +153,15 @@ $query = mysqli_query($conn, $sql);
               <div
                 class="flex w-full items-center justify-between gap-5 max-md:max-w-full max-md:flex-wrap"
               >
-                <h1 class="text-orange-950 text-4xl font-bold my-auto">
+                <h1 class="text-orange-950 text-4xl font-bold my-auto tooltip">
                   Active Members
                 </h1>
+                <span class="tooltiptext">Total number of members currently active in the gym.</span>
+                
+                
+
+
+
 
 
 
@@ -210,6 +216,10 @@ $query = mysqli_query($conn, $sql);
                 </div>
               </div>
               </div>
+
+        
+
+
             </header>
 
 
@@ -323,6 +333,7 @@ $query = mysqli_query($conn, $sql);
             <div class="self-center flex w-[100%] max-w-full max-md:flex-wrap justify-evenly mb-5">
 
             
+            
             <table>
 
     <tr>
@@ -331,7 +342,7 @@ $query = mysqli_query($conn, $sql);
         <th class="text-orange-950 font-semibold leading-6">Contact No.</th>
         <th class="text-orange-950 font-semibold leading-6">Membership Plan</th>
         <th class="text-orange-950 font-semibold leading-6">Expiry</th>
-        <th class="text-orange-950 font-semibold leading-6 pl-28">Action</th>
+        <th class="text-orange-950 font-semibold leading-6">Action</th>
     </tr>
     <tbody id="showdata"> 
           
