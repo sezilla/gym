@@ -179,36 +179,7 @@ $query = mysqli_query($conn, $sql);
                 </div>
               </a>
 
-              
-        
-
-        <script>
-            
-        function openForm() {
-            document.getElementById("myForm").style.display = "block";
-        }
-        function closeForm() {
-            document.getElementById("myForm").style.display = "none";
-        }
-
-        function burgeropen() {
-            document.getElementById("settings").style.display = "block";
-        }
-        function burgerclose() {
-            document.getElementById("settings").style.display = "none";
-        }
-
-        function gearopen() {
-            document.getElementById("mygear").style.display = "block";
-        }
-        function gearclose() {
-            document.getElementById("mygear").style.display = "none";
-        }
-
-  </script>
-
-
-             
+      
             </nav>
           </div>
         </aside>
@@ -235,24 +206,12 @@ $query = mysqli_query($conn, $sql);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-                <!--Admin Dropdown-->
+              <!--Admin Dropdown-->
               <div class="max-w-lg">
                 <button
                   class="text-[#424242] bg-transparent hover:bg-transparent focus:ring-4 focus:ring-transparent font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
                   type="button"
-                  data-dropdown-toggle="dropdown"
+                  data-dropdown-toggle="accdropdown"
                 >
                   Account
                 </button>
@@ -260,7 +219,7 @@ $query = mysqli_query($conn, $sql);
                 <!-- Dropdown menu -->
                 <div
                   class="hidden bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4"
-                  id="dropdown"
+                  id="accdropdown"
                 >
                         <div class="px-4 py-3">
                           <span class="block text-sm">Bonnie Green</span>
@@ -284,6 +243,17 @@ $query = mysqli_query($conn, $sql);
               </div>
               </div>
 
+
+
+
+
+
+
+
+
+
+
+                
               <span>Total number of INACTIVE members in the gym.</span>
         
 
@@ -303,30 +273,7 @@ $query = mysqli_query($conn, $sql);
                 </div>
               </div>
               <div class="flex gap-3 px-5">
-                <!--PROGRAM SECTION-->
-            <!--a href="#" class="justify-center items-center w-[160px] h-[40px] flex px-5 py-2 rounded-[40px] 
-                border-2 border-solid border-stone-500">
-              <div class="justify-center items-center flex w-[127px] max-w-full gap-4">
-                <div class="text-stone-500 text-lg leading-7 my-auto">Program</div>
-                <img loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/e2da229c-57b4-4c99-8c1d-dc4f7553e83c?apiKey=949dc02d5acc420a9a54e7e811a36e3e&"
-                  class="aspect-square object-contain object-center w-8 overflow-hidden self-stretch shrink-0 max-w-full"
-                  alt="Program Icon" />
-              </div>
-            </a-->
-            <!--form action="inactive.php" method="get"-->
-            
-
-                <!--SORT SECTION-->
-            <!--a href="#" class="justify-center items-center w-[125px] h-[40px] flex px-5 py-2 rounded-[40px] 
-                border-2 border-solid border-stone-500">
-                  <div class="justify-center items-center flex w-[84px] max-w-full gap-4">
-                    <div class="text-stone-500 text-lg leading-7 my-auto">Sort</div>
-                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/b1f4b831-70b4-4724-832d-ea63cec558e5?apiKey=949dc02d5acc420a9a54e7e811a36e3e&" 
-                    class="aspect-square object-contain object-center w-full overflow-hidden shrink-0 flex-1" 
-                    alt="Sort Icon" />
-                  </div>
-                </a-->
+                
 
                 <div id="dropdown" class="items-center w-[125px] h-[40px] flex px-5 py-0.5 rounded-[40px] 
                 border-2 border-solid border-stone-500">
@@ -363,47 +310,7 @@ $query = mysqli_query($conn, $sql);
                 </tr>
           <!--SHOWDATA-->
           <tbody id="showdata">
-          <!--?php 
-          include("db_conn.php");
-          
-          if (isset($_GET['order'])){
-            $sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from inactive ORDER BY reqtype $sort_order";
-          }
-          else if (isset($_GET['progvalue'])){
-            $sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from inactive WHERE program = '$program'";
-          }
-          else if (isset($_GET['order']) && isset($_GET['progvalue'])) {
-            $sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from inactive WHERE program = '$program' ORDER BY reqtype $sort_order";
-          }
-          else {
-            $sql = "SELECT fullname, student_num, ctrl_num, yr_sec, program, reqtype from inactive";
-          }
-          
-          
-          $result = $conn-> query($sql);
-
-          if ($result-> num_rows > 0) {
-              while ($row =  $result-> fetch_assoc()){
-                  echo "<tr>
-                  <td>". $row["fullname"]."</td>
-                  <td>". $row["student_num"]."</td>
-                  <td>". $row["ctrl_num"]."</td>
-                  <td>". $row["yr_sec"]."</td>
-                  <td>". $row["program"]."</td>
-                  <td>". $row["reqtype"]."</td>
-                  <td>
-                  <button class='bg-stone-500 text-white text-sm leading-5 font-medium rounded-3xl px-4 py-2.5 mr-5'>View</button>
-                        </td>
-                  </tr>";
-              }
-              echo "</table>";
-          }
-          else{
-              echo "0 results";
-          }
-
-          //$conn-> close();
-          ?-->
+      
           <?php 
           if (isset($_GET['order'])){
             $sql = "SELECT fullname, membershipno, contactno from inactive ORDER BY contactno $sort_order LIMIT $limitStart, $rowsPerPage";
@@ -516,10 +423,15 @@ $query = mysqli_query($conn, $sql);
           function SORTdropdown() {
             document.getElementById("sortDropdown").classList.toggle("show");
           }
+      
+          function accdropdown() {
+            document.getElementById("accdropdown").toggle("show");
+          }
 
 
-          // Close the dropdown menu if the user clicks outside of it
-          window.onclick = function (event) {
+
+           // Close the dropdown menu if the user clicks outside of it
+           window.onclick = function (event) {
             if (!event.target.matches('#dropbtn')) {
               var dropdowns = document.getElementsByClassName("dropdown-content");
               var i;
